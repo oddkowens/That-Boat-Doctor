@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>That Boat Doctor</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #122240;
+    --navy-mid: #1a3155;
+    --navy-light: #e8edf4;
+    --red: #cc2222;
+    --red-dark: #a81a1a;
+    --red-light: #fdf0f0;
+    --white: #ffffff;
+    --off-white: #f5f5f3;
+    --light-gray: #e8e8e8;
+    --mid-gray: #c0c8d4;
+    --muted: #6b7d95;
+    --text: #1a2a3a;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ANNOUNCE */
+  .announce {
+    background: var(--navy);
+    color: var(--white);
+    text-align: center;
+    padding: 0.55rem 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .announce .gold { color: #f4c84a; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem;
+    background: var(--white);
+    border-bottom: 2px solid var(--light-gray);
+    height: 68px;
+    box-shadow: 0 2px 12px rgba(18,34,64,0.07);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.45rem;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .nav-logo-text .red { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--navy); border-bottom-color: var(--red); }
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: var(--red);
+    border: none; padding: 0.65rem 1.8rem;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 86vh;
+    background: var(--off-white);
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-right {
+    background: var(--navy);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-right-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-logo-area {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+  }
+  .hero-sub-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 1.2rem;
+  }
+  .pulse-dot {
+    width: 8px; height: 8px; background: var(--red); border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)}
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 8vw, 7.5rem);
+    line-height: 0.9; color: var(--navy); margin-bottom: 0.15em;
+  }
+  .hero-title .red { color: var(--red); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--muted);
+    line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem;
+  }
+  .hero-sub strong { color: var(--navy); font-weight: 600; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-red {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: var(--red); border: none;
+    padding: 0.9rem 2.2rem; cursor: pointer; text-decoration: none;
+    display: inline-block; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-navy-out {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy); background: transparent;
+    border: 2px solid var(--navy);
+    padding: 0.9rem 2.2rem; cursor: pointer; text-decoration: none;
+    display: inline-block; transition: all 0.2s;
+  }
+  .btn-navy-out:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--light-gray);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem; color: var(--navy); line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); margin-top: 0.2rem;
+  }
+
+  /* TAGLINE STRIP */
+  .strip {
+    background: var(--navy); padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    overflow: hidden;
+  }
+  .strip-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3); white-space: nowrap;
+  }
+  .strip-text .hi { color: var(--white); }
+  .strip-sep { color: var(--red); }
+
+  /* SECTIONS */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content:''; display:block; width:26px; height:2px; background:var(--red);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 0.95; color: var(--navy);
+  }
+
+  /* PROCESS */
+  .process { padding: 7rem 5rem; background: var(--white); }
+  .process-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .process-desc { color: var(--muted); max-width:320px; font-size:0.95rem; line-height:1.7; }
+  .process-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border: 1.5px solid var(--light-gray);
+  }
+  .p-card {
+    padding: 2.5rem 2.2rem;
+    border-right: 1.5px solid var(--light-gray);
+    position: relative; transition: background 0.25s; overflow: hidden;
+  }
+  .p-card:last-child { border-right: none; }
+  .p-card:hover { background: var(--navy-light); }
+  .p-card::after {
+    content:''; position: absolute; top:0; left:0; right:0; height:3px;
+    background: var(--red); transform:scaleX(0); transform-origin:left;
+    transition: transform 0.3s;
+  }
+  .p-card:hover::after { transform: scaleX(1); }
+  .p-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem; color: var(--light-gray); line-height:1;
+    margin-bottom: 0.5rem; transition: color 0.25s;
+  }
+  .p-card:hover .p-num { color: var(--mid-gray); }
+  .p-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .p-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.2rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .p-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+  /* ENGINES */
+  .engines { padding: 7rem 5rem; background: var(--off-white); }
+  .section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .engines-grid {
+    display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 1.5px; background: var(--light-gray);
+    border: 1.5px solid var(--light-gray);
+  }
+  .e-card {
+    background: var(--white); overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer; position: relative;
+  }
+  .e-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(18,34,64,.12); z-index:2; }
+  .e-img {
+    height: 200px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .e-img-inner { display:flex; flex-direction:column; align-items:center; gap:.4rem; opacity:.18; }
+  .e-big-icon { font-size: 3.5rem; }
+  .e-img-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .e-badge {
+    position: absolute; top:1rem; left:1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.28rem 0.7rem; color: var(--white);
+  }
+  .badge-red { background: var(--red); }
+  .badge-navy { background: var(--navy); }
+  .e-body { padding: 1.5rem 1.75rem; }
+  .e-make {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red); font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .e-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.55rem; color: var(--navy); line-height:1; margin-bottom:.7rem;
+  }
+  .e-specs { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .e-spec {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted);
+    background: var(--off-white); border: 1px solid var(--light-gray);
+    padding: 0.18rem 0.6rem;
+  }
+  .e-foot {
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:1rem; border-top:1px solid var(--light-gray);
+  }
+  .e-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; color: var(--navy); line-height:1;
+  }
+  .btn-sm-red {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--white);
+    background: var(--red); border: none; padding: 0.52rem 1.1rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-sm-red:hover { background: var(--red-dark); }
+
+  /* MERCH */
+  .merch { padding: 7rem 5rem; background: var(--white); }
+  .merch-grid {
+    display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    gap: 1.5px; background: var(--light-gray);
+    border: 1.5px solid var(--light-gray); margin-top: 3rem;
+  }
+  .m-card {
+    background: var(--white); overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s; cursor: pointer;
+  }
+  .m-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(18,34,64,.1); z-index:2; position:relative; }
+  .m-img {
+    height: 248px; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .m-img.dark { background: var(--navy); }
+  .m-img.light { background: var(--off-white); }
+  .m-img.pale-red { background: var(--red-light); }
+  .m-img.pale-blue { background: var(--navy-light); }
+  .m-icon { font-size: 3.8rem; opacity: 0.18; }
+  .m-icon.on-dark { opacity: 0.22; color: white; }
+  .m-tag {
+    position:absolute; top:1rem; right:1rem;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:0.65rem; letter-spacing:0.1em;
+    text-transform:uppercase; padding:0.22rem 0.65rem;
+    background:#f4c84a; color:var(--navy);
+  }
+  .m-body { padding: 1.2rem 1.5rem; }
+  .m-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight:700; font-size:1.05rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--navy); margin-bottom:.7rem;
+  }
+  .m-foot { display:flex; align-items:center; justify-content:space-between; }
+  .m-price {
+    font-family:'Bebas Neue',sans-serif; font-size:1.65rem; color:var(--navy);
+  }
+  .btn-sm-navy {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:0.8rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--white);
+    background:var(--navy); border:none; padding:0.52rem 1.1rem;
+    cursor:pointer; transition:background 0.2s;
+  }
+  .btn-sm-navy:hover { background:var(--red); }
+
+  /* ABOUT */
+  .about {
+    padding: 7rem 5rem; background: var(--navy);
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:6rem; align-items:center;
+  }
+  .about-vis { position:relative; }
+  .about-box {
+    width:100%; aspect-ratio:4/3;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .about-box::before {
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+    background-size:30px 30px;
+  }
+  .about-corner {
+    position:absolute; top:-1.2rem; left:-1.2rem;
+    width:48px; height:48px; border:3px solid rgba(255,255,255,.15); z-index:3;
+  }
+  .about-quote-box {
+    position:absolute; bottom:-1.5rem; right:-1.5rem;
+    background:var(--red); color:var(--white);
+    padding:1.4rem 1.8rem; z-index:3;
+    font-family:'Bebas Neue',sans-serif; font-size:1.15rem;
+    letter-spacing:0.04em; line-height:1.35; max-width:230px;
+  }
+  .about-content .section-label { color:rgba(255,255,255,.45); }
+  .about-content .section-label::before { background:rgba(255,255,255,.25); }
+  .about-content .section-title { color:var(--white); margin-bottom:1rem; }
+  .about-bq {
+    font-family:'Bebas Neue',sans-serif; font-size:1.2rem;
+    color:rgba(255,255,255,.3); letter-spacing:0.05em;
+    border-left:3px solid var(--red); padding-left:1rem;
+    margin-bottom:1.5rem;
+  }
+  .about-p { font-size:.95rem; color:rgba(255,255,255,.55); line-height:1.8; margin-bottom:1.2rem; }
+  .about-p strong { color:var(--white); }
+  .about-list { list-style:none; display:flex; flex-direction:column; gap:.65rem; }
+  .about-list li {
+    font-family:'Barlow Condensed',sans-serif; font-size:.95rem;
+    letter-spacing:.03em; color:rgba(255,255,255,.5);
+    display:flex; align-items:center; gap:.7rem;
+  }
+  .about-list li::before { content:'✚'; color:var(--red); font-size:.7rem; flex-shrink:0; }
+
+  /* SOCIAL */
+  .social { padding:6rem 5rem; background:var(--off-white); text-align:center; }
+  .social .section-label { justify-content:center; }
+  .social .section-title { margin-bottom:0.75rem; }
+  .social-sub { font-size:.95rem; color:var(--muted); max-width:460px; margin:0 auto 3rem; }
+  .social-cards { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+  .s-card {
+    background:var(--white); border:1.5px solid var(--light-gray);
+    padding:2.2rem 2rem; width:190px; text-align:center;
+    text-decoration:none; display:flex; flex-direction:column;
+    align-items:center; gap:.6rem;
+    transition:border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .s-card:hover { border-color:var(--navy); transform:translateY(-4px); box-shadow:0 8px 28px rgba(18,34,64,.1); }
+  .s-icon { font-size:2rem; }
+  .s-platform {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:0.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
+  }
+  .s-handle {
+    font-family:'Barlow Condensed',sans-serif; font-size:.88rem;
+    color:var(--navy); font-weight:600;
+  }
+  .s-cta {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--red); margin-top:.15rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background:#0d1d30; padding:5rem;
+    display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem;
+  }
+  .f-logo {
+    font-family:'Bebas Neue',sans-serif; font-size:1.9rem;
+    color:var(--white); line-height:1; margin-bottom:1rem;
+  }
+  .f-logo span { color:var(--red); }
+  .f-tagline {
+    font-size:.88rem; color:rgba(255,255,255,.38);
+    line-height:1.65; max-width:230px; margin-bottom:1.5rem; font-style:italic;
+  }
+  .f-socials { display:flex; gap:.55rem; }
+  .f-socials a {
+    width:35px; height:35px; border:1px solid rgba(255,255,255,.1);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.85rem; color:rgba(255,255,255,.35);
+    text-decoration:none; transition: all .2s;
+  }
+  .f-socials a:hover { border-color:var(--red); color:var(--white); background:var(--red); }
+  .f-col h4 {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:0.72rem; letter-spacing:.25em; text-transform:uppercase;
+    color:rgba(255,255,255,.45); margin-bottom:1.1rem;
+    padding-bottom:.65rem; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .f-col ul { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+  .f-col a { font-size:.88rem; color:rgba(255,255,255,.38); text-decoration:none; transition:color .2s; }
+  .f-col a:hover { color:var(--white); }
+  .f-bottom {
+    background:#07111e; padding:1.3rem 5rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Barlow Condensed',sans-serif; font-size:.78rem;
+    letter-spacing:.06em; color:rgba(255,255,255,.22);
+    border-top:1px solid rgba(255,255,255,.04);
+  }
+
+  hr { border:none; height:1.5px; background:var(--light-gray); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from{opacity:0;transform:translateY(22px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .hero-eyebrow{animation:fadeUp .5s ease both}
+  .hero-title{animation:fadeUp .5s .1s ease both}
+  .hero-sub{animation:fadeUp .5s .2s ease both}
+  .hero-actions{animation:fadeUp .5s .3s ease both}
+  .hero-stats{animation:fadeUp .5s .4s ease both}
+
+  @media(max-width:1000px){
+    nav{padding:0 1.5rem}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-left{padding:5rem 1.5rem 3rem}
+    .hero-right{min-height:300px}
+    .process,.engines,.merch,.about,.social,footer{padding:4rem 1.5rem}
+    .process-grid{grid-template-columns:1fr 1fr}
+    .p-card{border-right:none;border-bottom:1.5px solid var(--light-gray)}
+    .about{grid-template-columns:1fr}
+    footer{grid-template-columns:1fr 1fr}
+    .f-bottom{flex-direction:column;gap:.4rem;padding:1rem 1.5rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- Announce Bar -->
+<div class="announce">
+  🔧 New Listing: Yamaha 150HP 4-Stroke &nbsp;<span class="gold">·</span>&nbsp; Free shipping on merch over $75 &nbsp;<span class="gold">·</span>&nbsp; DM on Instagram to inquire
+</div>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg width="40" height="40" viewBox="0 0 42 42" fill="none">
+      <rect x="15.5" y="2" width="11" height="22" rx="2.5" fill="#cc2222"/>
+      <rect x="8" y="9" width="26" height="11" rx="2.5" fill="#cc2222"/>
+      <path d="M6 29 Q21 23 36 29 L32 37 Q21 41 10 37 Z" fill="#122240"/>
+      <path d="M8 31 Q21 26 34 31" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M7 35 Q21 30 35 35" stroke="white" stroke-width="1" fill="none" opacity="0.3"/>
+    </svg>
+    <div class="nav-logo-text">BOAT <span class="red">DOCTOR</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#engines">Engines</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#social">Follow</a></li>
+  </ul>
+  <a href="#engines" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="pulse-dot"></div>
+      Restoring Forgotten Boats
+    </div>
+    <h1 class="hero-title">
+      THAT<br><span class="red">BOAT</span><br>DOCTOR
+    </h1>
+    <p class="hero-sub">
+      <strong>Buying, repairing &amp; flipping outboards</strong> — one engine at a time. Every motor is fully diagnosed, fixed right, and water-tested before it ever gets listed.
+    </p>
+    <div class="hero-actions">
+      <a href="#engines" class="btn-red">Browse Engines</a>
+      <a href="#merch" class="btn-navy-out">Shop Merch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">100+</div><div class="stat-label">Engines Flipped</div></div>
+      <div><div class="stat-num">5★</div><div class="stat-label">Avg. Rating</div></div>
+      <div><div class="stat-num">50K+</div><div class="stat-label">Followers</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-pattern"></div>
+    <div class="hero-logo-area">
+      <!-- Full logo recreation matching uploaded brand mark -->
+      <svg width="250" height="290" viewBox="0 0 250 290" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 60px rgba(0,0,0,.55))">
+        <!-- Red cross -->
+        <rect x="93" y="6" width="44" height="92" rx="7" fill="#cc2222"/>
+        <rect x="60" y="39" width="110" height="44" rx="7" fill="#cc2222"/>
+        <!-- Boat hull -->
+        <path d="M28 150 L56 112 L194 112 L222 150 Q175 140 125 138 Q75 138 28 150Z" fill="white"/>
+        <!-- Cockpit/windshield -->
+        <path d="M92 112 L102 90 L148 90 L158 112Z" fill="white" opacity="0.7"/>
+        <!-- Hull fill -->
+        <path d="M26 153 Q125 143 224 153 L220 162 Q125 155 30 162Z" fill="#122240"/>
+        <!-- White accent stripe -->
+        <path d="M26 153 Q125 143 224 153" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <!-- Wave 1 -->
+        <path d="M12 172 Q60 162 108 172 Q156 182 204 172 Q222 168 238 172" stroke="#122240" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <!-- Wave 2 -->
+        <path d="M16 189 Q64 179 112 189 Q160 199 208 189 Q224 185 240 189" stroke="#122240" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <!-- BOAT text -->
+        <text x="125" y="240" font-family="'Bebas Neue','Arial Black',Impact,sans-serif" font-size="66" fill="#122240" text-anchor="middle" letter-spacing="5">BOAT</text>
+        <!-- DOCTOR text -->
+        <text x="125" y="281" font-family="'Bebas Neue','Arial Black',Impact,sans-serif" font-size="55" fill="#122240" text-anchor="middle" letter-spacing="4">DOCTOR</text>
+      </svg>
+      <div class="hero-sub-label">That Boat Doctor · Est. Now</div>
+    </div>
+  </div>
+</div>
+
+<!-- Strip -->
+<div class="strip">
+  <div class="strip-text">
+    <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
+    <span class="strip-sep"> · </span>
+    Restoring forgotten boats one video at a time
+    <span class="strip-sep"> · </span>
+    A community for boaters and our problems
+    <span class="strip-sep"> · </span>
+    <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div>
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">From Dock Find<br>to Ready to Run</h2>
+    </div>
+    <p class="process-desc">Every engine on this site went through the same process — no shortcuts, no hiding problems.</p>
+  </div>
+  <div class="process-grid">
+    <div class="p-card">
+      <div class="p-num">01</div>
+      <div class="p-icon">🔍</div>
+      <div class="p-title">Find It</div>
+      <p class="p-desc">Sourced from docks, auctions, and private sellers. The worse it looks, the more interested we are.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-num">02</div>
+      <div class="p-icon">🩺</div>
+      <div class="p-title">Diagnose It</div>
+      <p class="p-desc">Full teardown and inspection. We find what everyone else missed — and document every bit of it on camera.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-num">03</div>
+      <div class="p-icon">🔧</div>
+      <div class="p-title">Fix It Right</div>
+      <p class="p-desc">No shortcuts. Quality parts, proper technique, and a running engine before it ever leaves the shop.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-num">04</div>
+      <div class="p-icon">🌊</div>
+      <div class="p-title">Flip It</div>
+      <p class="p-desc">Priced fair, history disclosed. You get a shop-quality engine at a used engine price — every time.</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ENGINES FOR SALE -->
+<section class="engines" id="engines">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Used Outboards</div>
+      <h2 class="section-title">Engines<br>For Sale</h2>
+    </div>
+    <a href="#" class="btn-navy-out">View All Listings →</a>
+  </div>
+  <div class="engines-grid">
+
+    <div class="e-card">
+      <div class="e-img">
+        <span class="e-badge badge-red">Just Listed</span>
+        <div class="e-img-inner"><div class="e-big-icon">⚙️</div><div class="e-img-label">Photo Coming</div></div>
+      </div>
+      <div class="e-body">
+        <div class="e-make">Yamaha</div>
+        <div class="e-name">150 HP 4-Stroke</div>
+        <div class="e-specs"><span class="e-spec">2018</span><span class="e-spec">Rebuilt Carbs</span><span class="e-spec">New Impeller</span></div>
+        <div class="e-foot"><span class="e-price">$3,800</span><button class="btn-sm-red">Inquire</button></div>
+      </div>
+    </div>
+
+    <div class="e-card">
+      <div class="e-img">
+        <div class="e-img-inner"><div class="e-big-icon">⚙️</div><div class="e-img-label">Photo Coming</div></div>
+      </div>
+      <div class="e-body">
+        <div class="e-make">Mercury</div>
+        <div class="e-name">90 HP 2-Stroke</div>
+        <div class="e-specs"><span class="e-spec">2015</span><span class="e-spec">Full Service</span><span class="e-spec">Runs Strong</span></div>
+        <div class="e-foot"><span class="e-price">$2,200</span><button class="btn-sm-red">Inquire</button></div>
+      </div>
+    </div>
+
+    <div class="e-card">
+      <div class="e-img">
+        <span class="e-badge badge-navy">Hot Deal</span>
+        <div class="e-img-inner"><div class="e-big-icon">⚙️</div><div class="e-img-label">Photo Coming</div></div>
+      </div>
+      <div class="e-body">
+        <div class="e-make">Evinrude</div>
+        <div class="e-name">115 HP E-TEC</div>
+        <div class="e-specs"><span class="e-spec">2016</span><span class="e-spec">Low Hours</span><span class="e-spec">Tested</span></div>
+        <div class="e-foot"><span class="e-price">$2,950</span><button class="btn-sm-red">Inquire</button></div>
+      </div>
+    </div>
+
+    <div class="e-card">
+      <div class="e-img">
+        <div class="e-img-inner"><div class="e-big-icon">⚙️</div><div class="e-img-label">Photo Coming</div></div>
+      </div>
+      <div class="e-body">
+        <div class="e-make">Honda</div>
+        <div class="e-name">60 HP 4-Stroke</div>
+        <div class="e-specs"><span class="e-spec">2019</span><span class="e-spec">Freshwater</span><span class="e-spec">Clean</span></div>
+        <div class="e-foot"><span class="e-price">$1,850</span><button class="btn-sm-red">Inquire</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<!-- MERCH -->
+<section class="merch" id="merch">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Official Gear</div>
+      <h2 class="section-title">Rep The<br>Boat Doc</h2>
+    </div>
+    <a href="#" class="btn-navy-out">Full Store →</a>
+  </div>
+  <div class="merch-grid">
+
+    <div class="m-card">
+      <div class="m-img dark">
+        <span class="m-icon on-dark">👕</span>
+        <div class="m-tag">Bestseller</div>
+      </div>
+      <div class="m-body">
+        <div class="m-name">That Boat Doctor Tee</div>
+        <div class="m-foot"><span class="m-price">$28</span><button class="btn-sm-navy">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="m-card">
+      <div class="m-img light">
+        <span class="m-icon">🧢</span>
+      </div>
+      <div class="m-body">
+        <div class="m-name">Snapback Cap</div>
+        <div class="m-foot"><span class="m-price">$32</span><button class="btn-sm-navy">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="m-card">
+      <div class="m-img dark">
+        <span class="m-icon on-dark">🧥</span>
+        <div class="m-tag">New</div>
+      </div>
+      <div class="m-body">
+        <div class="m-name">Boat Doc Hoodie</div>
+        <div class="m-foot"><span class="m-price">$55</span><button class="btn-sm-navy">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="m-card">
+      <div class="m-img pale-blue">
+        <span class="m-icon">🌊</span>
+      </div>
+      <div class="m-body">
+        <div class="m-name">Sticker Pack (5-pack)</div>
+        <div class="m-foot"><span class="m-price">$12</span><button class="btn-sm-navy">Add to Cart</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-vis">
+    <div class="about-box">
+      <svg width="130" height="152" viewBox="0 0 250 290" fill="none" style="opacity:.75;position:relative;z-index:2">
+        <rect x="93" y="6" width="44" height="92" rx="7" fill="#cc2222"/>
+        <rect x="60" y="39" width="110" height="44" rx="7" fill="#cc2222"/>
+        <path d="M28 150 L56 112 L194 112 L222 150 Q175 140 125 138 Q75 138 28 150Z" fill="white" opacity=".9"/>
+        <path d="M92 112 L102 90 L148 90 L158 112Z" fill="white" opacity=".5"/>
+        <path d="M26 153 Q125 143 224 153" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M12 172 Q60 162 108 172 Q156 182 204 172" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" opacity=".35"/>
+        <text x="125" y="240" font-family="'Bebas Neue','Arial Black',Impact,sans-serif" font-size="66" fill="white" text-anchor="middle" letter-spacing="5" opacity=".85">BOAT</text>
+        <text x="125" y="281" font-family="'Bebas Neue','Arial Black',Impact,sans-serif" font-size="55" fill="white" text-anchor="middle" letter-spacing="4" opacity=".85">DOCTOR</text>
+      </svg>
+    </div>
+    <div class="about-corner"></div>
+    <div class="about-quote-box">Every engine runs before it ships. Period.</div>
+  </div>
+  <div class="about-content">
+    <div class="section-label">About</div>
+    <h2 class="section-title">The Doctor<br>Is In</h2>
+    <blockquote class="about-bq">"Restoring forgotten boats one video at a time."</blockquote>
+    <p class="about-p">
+      <strong>That Boat Doctor</strong> started with a neglected motor, a camera, and a belief that no engine is too far gone — it just needs the right hands. What started as a passion project became a community of boaters watching every teardown, diagnosis, and water test in real time.
+    </p>
+    <p class="about-p">
+      Every engine is personally inspected, repaired, and splash-tested before it hits the market. Full history, no surprises.
+    </p>
+    <ul class="about-list">
+      <li>100% tested before listing — every single time</li>
+      <li>Full repair history disclosed upfront</li>
+      <li>Ships nationwide</li>
+      <li>DM for questions — always answered personally</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="social" id="social">
+  <div class="section-label">Follow Along</div>
+  <h2 class="section-title">Watch Every Flip Live</h2>
+  <p class="social-sub">Every teardown, rebuild, and water test — documented start to finish. Join the community.</p>
+  <div class="social-cards">
+    <a class="s-card" href="https://www.instagram.com/thatboatdoctor" target="_blank">
+      <div class="s-icon">📸</div>
+      <div class="s-platform">Instagram</div>
+      <div class="s-handle">@thatboatdoctor</div>
+      <div class="s-cta">Follow →</div>
+    </a>
+    <a class="s-card" href="https://youtube.com/@boatdoctor" target="_blank">
+      <div class="s-icon">▶️</div>
+      <div class="s-platform">YouTube</div>
+      <div class="s-handle">@boatdoctor</div>
+      <div class="s-cta">Subscribe →</div>
+    </a>
+    <a class="s-card" href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">
+      <div class="s-icon">👥</div>
+      <div class="s-platform">Facebook</div>
+      <div class="s-handle">That Boat Doctor</div>
+      <div class="s-cta">Join →</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">BOAT <span>DOCTOR</span></div>
+    <p class="f-tagline">"Restoring forgotten boats one video at a time. A community for boaters and our problems."</p>
+    <div class="f-socials">
+      <a href="https://www.instagram.com/thatboatdoctor" target="_blank">📸</a>
+      <a href="https://youtube.com/@boatdoctor" target="_blank">▶</a>
+      <a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">f</a>
+    </div>
+  </div>
+  <div class="f-col">
+    <h4>Shop</h4>
+    <ul>
+      <li><a href="#">All Engines</a></li>
+      <li><a href="#">Merch Store</a></li>
+      <li><a href="#">New Listings</a></li>
+      <li><a href="#">Sold Archive</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">How It Works</a></li>
+      <li><a href="#">Shipping Policy</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="#">DM on Instagram</a></li>
+      <li><a href="#">Message on Facebook</a></li>
+      <li><a href="#">Email Us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 That Boat Doctor. All rights reserved.</span>
+  <span>Buy · Repair · Flip</span>
+</div>
+
+</body>
+</html>
