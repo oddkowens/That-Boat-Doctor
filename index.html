@@ -362,13 +362,13 @@
   }
   .e-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(18,34,64,.12); z-index:2; }
   .e-img {
-    height: 220px;
+    aspect-ratio: 1 / 1;
     position: relative; overflow: hidden;
-    background: var(--navy);
+    background: var(--white);
   }
   .e-img img {
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.4s ease;
     display: block;
   }
@@ -459,9 +459,9 @@
   }
   .modal-close:hover { background: var(--red); color: var(--white); }
   .modal-img {
-    height: 320px; width: 100%;
-    object-fit: cover; display: block;
-    background: var(--navy);
+    aspect-ratio: 1 / 1; max-height: 360px; width: 100%;
+    object-fit: contain; display: block;
+    background: var(--off-white);
   }
   .modal-img-placeholder {
     height: 320px; width: 100%;
@@ -540,12 +540,12 @@
   }
   .m-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(18,34,64,.1); z-index:2; position:relative; }
   .m-img {
-    height: 260px;
+    aspect-ratio: 1 / 1;
     position: relative; overflow: hidden;
   }
   .m-img img {
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.4s ease;
     display: block;
   }
@@ -810,6 +810,84 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  /* SCROLL PROGRESS BAR */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--red); width: 0%; z-index: 300;
+    transition: width 0.1s linear;
+  }
+
+  /* NAV SHRINK ON SCROLL */
+  nav { transition: height 0.3s ease, box-shadow 0.3s ease; }
+  nav.scrolled { height: 58px; box-shadow: 0 4px 20px rgba(18,34,64,0.12); }
+  nav.scrolled .nav-logo img { height: 36px; transition: height 0.3s ease; }
+
+  /* BUTTON SHINE SWEEP */
+  .btn-red, .nav-cta, .btn-sm-red { position: relative; overflow: hidden; }
+  .btn-red::before, .nav-cta::before, .btn-sm-red::before {
+    content:''; position:absolute; top:0; left:-120%;
+    width:60%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform:skewX(-20deg); transition:left 0.55s ease;
+  }
+  .btn-red:hover::before, .nav-cta:hover::before, .btn-sm-red:hover::before { left:140%; }
+
+  /* PULSING JUST-LISTED BADGE */
+  .e-badge.badge-red { animation: badgePulse 2.2s ease infinite; }
+  @keyframes badgePulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(204,34,34,0.5); }
+    50% { box-shadow: 0 0 0 7px rgba(204,34,34,0); }
+  }
+
+  /* ENGINE CARD HOVER OVERLAY */
+  .e-img-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    background: rgba(18,34,64,0.55);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .e-card:hover .e-img-overlay { opacity: 1; }
+  .e-img-overlay span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.95rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--white); display: flex; align-items: center; gap: 0.5rem;
+    border: 2px solid var(--white); padding: 0.6rem 1.4rem;
+    transform: translateY(8px); transition: transform 0.3s ease, background 0.2s;
+  }
+  .e-card:hover .e-img-overlay span { transform: translateY(0); }
+  .e-img-overlay span:hover { background: var(--red); border-color: var(--red); }
+  .e-img-overlay svg { width: 16px; height: 16px; stroke: currentColor; }
+
+  /* PRICE EMPHASIS ON HOVER */
+  .e-price, .m-price { transition: color 0.25s ease, transform 0.25s ease; }
+  .e-card:hover .e-price, .m-card:hover .m-price { color: var(--red); }
+
+  /* CARD LIFT REFINEMENT */
+  .e-card, .m-card { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease; }
+
+  /* SECTION TITLE ACCENT DRAW */
+  .section-label::before { transition: width 0.5s ease; }
+  .reveal .section-label::before { width: 0; }
+  .reveal.visible .section-label::before { width: 26px; }
+
+  /* MARQUEE STRIP */
+  .strip { display: block; overflow: hidden; padding: 1.2rem 0; }
+  .strip-track {
+    display: inline-flex; white-space: nowrap;
+    animation: marquee 38s linear infinite;
+    will-change: transform;
+  }
+  .strip:hover .strip-track { animation-play-state: paused; }
+  .strip-group { display: inline-flex; align-items: center; padding-right: 1.5rem; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .strip-track { animation: none; }
+  }
+
   /* RESPONSIVE */
   @media(max-width:1000px){
     nav { padding: 0 1.5rem; }
@@ -838,6 +916,8 @@
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Announce Bar -->
 <div class="announce">
@@ -896,9 +976,9 @@
       <a href="#merch" class="btn-navy-out">Shop Merch</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">100+</div><div class="stat-label">Engines Flipped</div></div>
-      <div><div class="stat-num">5.0<span style="color:#f4c84a;font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
-      <div><div class="stat-num">50K+</div><div class="stat-label">Followers</div></div>
+      <div><div class="stat-num"><span class="counter" data-count="100" data-suffix="+">0</span></div><div class="stat-label">Engines Flipped</div></div>
+      <div><div class="stat-num"><span class="counter" data-count="5" data-decimals="1">0.0</span><span style="color:#f4c84a;font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
+      <div><div class="stat-num"><span class="counter" data-count="50" data-suffix="K+">0</span></div><div class="stat-label">Followers</div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -914,14 +994,23 @@
 
 <!-- Strip -->
 <div class="strip">
-  <div class="strip-text">
-    <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
-    <span class="strip-sep"> · </span>
-    Restoring forgotten boats one video at a time
-    <span class="strip-sep"> · </span>
-    A community for boaters and our problems
-    <span class="strip-sep"> · </span>
-    <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
+  <div class="strip-track">
+    <div class="strip-group strip-text">
+      <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
+      <span class="strip-sep"> · </span>
+      Restoring forgotten boats one video at a time
+      <span class="strip-sep"> · </span>
+      A community for boaters and our problems
+      <span class="strip-sep"> · </span>
+    </div>
+    <div class="strip-group strip-text" aria-hidden="true">
+      <span class="hi">BUY</span> <span class="strip-sep">✚</span> <span class="hi">REPAIR</span> <span class="strip-sep">✚</span> <span class="hi">FLIP</span>
+      <span class="strip-sep"> · </span>
+      Restoring forgotten boats one video at a time
+      <span class="strip-sep"> · </span>
+      A community for boaters and our problems
+      <span class="strip-sep"> · </span>
+    </div>
   </div>
 </div>
 
@@ -986,6 +1075,7 @@
       <div class="e-img">
         <span class="e-badge badge-red">Just Listed</span>
         <img src="images/engine-yamaha-150.jpg" alt="Yamaha 150HP 4-Stroke">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Details</span></div>
       </div>
       <div class="e-body">
         <div class="e-make">Yamaha</div>
@@ -998,6 +1088,7 @@
     <div class="e-card" onclick="openModal('mercury')">
       <div class="e-img">
         <img src="images/engine-mercury-90.jpg" alt="Mercury 90HP 2-Stroke">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Details</span></div>
       </div>
       <div class="e-body">
         <div class="e-make">Mercury</div>
@@ -1011,6 +1102,7 @@
       <div class="e-img">
         <span class="e-badge badge-navy">Hot Deal</span>
         <img src="images/engine-evinrude-115.jpg" alt="Evinrude 115HP E-TEC">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Details</span></div>
       </div>
       <div class="e-body">
         <div class="e-make">Evinrude</div>
@@ -1023,6 +1115,7 @@
     <div class="e-card" onclick="openModal('honda')">
       <div class="e-img">
         <img src="images/engine-honda-60.jpg" alt="Honda 60HP 4-Stroke">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Details</span></div>
       </div>
       <div class="e-body">
         <div class="e-make">Honda</div>
@@ -1421,6 +1514,46 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   revealTargets.forEach(el => observer.observe(el));
+
+  // Scroll progress bar + nav shrink
+  const progress = document.getElementById('scrollProgress');
+  const navEl = document.querySelector('nav');
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    if (h.scrollTop > 50) navEl.classList.add('scrolled');
+    else navEl.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Animated count-up stats
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0');
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = (target * eased).toFixed(decimals);
+      el.textContent = val + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
   // Graceful fallback for any missing product image
   document.querySelectorAll('.e-img img, .m-img img, .about-box img').forEach(img => {
