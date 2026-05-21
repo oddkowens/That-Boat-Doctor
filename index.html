@@ -953,9 +953,24 @@
     .hamburger { display: flex; }
     .mobile-drawer { display: flex; }
     .drawer-overlay { display: block; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 5rem 1.5rem 3rem; }
-    .hero-right { min-height: 320px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left {
+      padding: 7rem 1.5rem 4rem;
+      background: var(--navy);
+      background-image: linear-gradient(rgba(18,34,64,0.78), rgba(18,34,64,0.78)), url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-title { color: var(--white); }
+    .hero-title .red { color: var(--red); }
+    .hero-sub { color: rgba(255,255,255,0.65); }
+    .hero-sub strong { color: var(--white); }
+    .hero-stats { border-top-color: rgba(255,255,255,0.12); }
+    .stat-num { color: var(--white); }
+    .stat-label { color: rgba(255,255,255,0.45); }
+    .btn-navy-out { color: var(--white); border-color: rgba(255,255,255,0.4); }
+    .btn-navy-out:hover { background: var(--white); color: var(--navy); }
     .process,.engines,.merch,.about,.social,.reviews { padding: 4rem 1.5rem; }
     footer { padding: 4rem 1.5rem; grid-template-columns: 1fr 1fr; }
     .process-grid { grid-template-columns: 1fr 1fr; }
