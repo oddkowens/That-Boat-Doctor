@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>That Boat Doctor</title>
+<title>That Boat Doctor — Used Outboard Engines, Repaired &amp; Flipped</title>
+<meta name="description" content="Buying, repairing & flipping outboard engines one at a time. Every motor fully diagnosed, fixed right, and water-tested before it's listed. Shop used outboards & official merch.">
+<link rel="icon" type="image/png" href="images/that-boat-doctor-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -300,9 +302,10 @@
     border: 1.5px solid var(--light-gray);
   }
   .p-card {
-    padding: 2.5rem 2.2rem;
+    padding: 2.8rem 2.2rem;
     border-right: 1.5px solid var(--light-gray);
     position: relative; transition: background 0.25s; overflow: hidden;
+    background: var(--off-white);
   }
   .p-card:last-child { border-right: none; }
   .p-card:hover { background: var(--navy-light); }
@@ -314,27 +317,41 @@
   .p-card:hover::after { transform: scaleX(1); }
   .p-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem; color: var(--light-gray); line-height:1;
-    margin-bottom: 0.5rem; transition: color 0.25s;
+    font-size: 4.5rem; color: var(--mid-gray); line-height:1;
+    margin-bottom: 0.8rem; transition: color 0.25s; opacity: 0.5;
   }
-  .p-card:hover .p-num { color: var(--mid-gray); }
-  .p-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .p-card:hover .p-num { color: var(--red); opacity: 0.4; }
+  .p-icon { margin-bottom: 1rem; }
   .p-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 1.2rem;
+    font-weight: 700; font-size: 1.35rem;
     letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--navy); margin-bottom: 0.6rem;
+    color: var(--navy); margin-bottom: 0.7rem;
   }
   .p-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
 
   /* ENGINES */
   .engines { padding: 7rem 5rem; background: var(--off-white); }
+  .engines-trust {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem; padding: 1rem 1.5rem;
+    background: var(--white); border: 1.5px solid var(--light-gray);
+  }
+  .engines-trust span {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .engines-trust svg { width: 16px; height: 16px; stroke: var(--red); stroke-width: 2; }
+  .engines-trust .trust-sep { color: var(--mid-gray); }
   .section-header {
     display: flex; justify-content: space-between; align-items: flex-end;
     margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
   }
   .engines-grid {
-    display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
     gap: 1.5px; background: var(--light-gray);
     border: 1.5px solid var(--light-gray);
   }
@@ -380,13 +397,13 @@
   .e-body { padding: 1.5rem 1.75rem; }
   .e-make {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--red); font-weight: 600;
-    margin-bottom: 0.2rem;
+    font-size: 0.78rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red); font-weight: 700;
+    margin-bottom: 0.3rem;
   }
   .e-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.55rem; color: var(--navy); line-height:1; margin-bottom:.7rem;
+    font-size: 1.95rem; color: var(--navy); line-height:1; margin-bottom:.8rem;
   }
   .e-specs { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
   .e-spec {
@@ -513,7 +530,7 @@
   /* MERCH */
   .merch { padding: 7rem 5rem; background: var(--white); }
   .merch-grid {
-    display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
     gap: 1.5px; background: var(--light-gray);
     border: 1.5px solid var(--light-gray); margin-top: 3rem;
   }
@@ -641,7 +658,7 @@
     text-transform: uppercase; color: var(--muted);
   }
   .reviews-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5px; background: var(--light-gray);
     border: 1.5px solid var(--light-gray);
   }
@@ -764,15 +781,13 @@
   hr { border:none; height:1.5px; background:var(--light-gray); }
 
   /* LUCIDE ICONS */
-  .p-icon i { width:28px; height:28px; stroke:var(--navy); stroke-width:1.5; display:block; }
-  .p-card:hover .p-icon i { stroke:var(--red); }
-  .s-icon i { width:34px; height:34px; stroke:var(--navy); stroke-width:1.5; display:block; }
-  .f-socials a i { width:16px; height:16px; display:block; stroke:rgba(255,255,255,.35); }
-  .f-socials a:hover i { stroke:var(--white); }
-  .star i { width:18px; height:18px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; vertical-align:middle; }
-  .r-stars i { width:15px; height:15px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; }
-  .r-badge i { width:11px; height:11px; stroke:var(--red); stroke-width:2.5; display:inline-block; vertical-align:middle; }
-  .announce i { width:13px; height:13px; stroke:white; stroke-width:2; display:inline-block; vertical-align:middle; margin-right:0.3rem; }
+  .p-icon svg { width:34px; height:34px; stroke:var(--navy); stroke-width:1.5; display:block; }
+  .p-card:hover .p-icon svg { stroke:var(--red); }
+  .f-socials a svg { width:16px; height:16px; display:block; }
+  .star svg { width:18px; height:18px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; vertical-align:middle; }
+  .r-stars svg { width:15px; height:15px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; }
+  .r-badge svg { width:11px; height:11px; stroke:var(--red); stroke-width:2.5; display:inline-block; vertical-align:middle; }
+  .announce svg { width:13px; height:13px; stroke:white; stroke-width:2; display:inline-block; vertical-align:middle; margin-right:0.3rem; }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -784,6 +799,16 @@
   .hero-sub{animation:fadeUp .5s .2s ease both}
   .hero-actions{animation:fadeUp .5s .3s ease both}
   .hero-stats{animation:fadeUp .5s .4s ease both}
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
 
   /* RESPONSIVE */
   @media(max-width:1000px){
@@ -872,7 +897,7 @@
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">100+</div><div class="stat-label">Engines Flipped</div></div>
-      <div><div class="stat-num">5★</div><div class="stat-label">Avg. Rating</div></div>
+      <div><div class="stat-num">5.0<span style="color:#f4c84a;font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
       <div><div class="stat-num">50K+</div><div class="stat-label">Followers</div></div>
     </div>
   </div>
@@ -947,6 +972,13 @@
       <h2 class="section-title">Engines<br>For Sale</h2>
     </div>
     <a href="#" class="btn-navy-out">View All Listings →</a>
+  </div>
+  <div class="engines-trust">
+    <span><i data-lucide="message-circle"></i> DM to reserve</span>
+    <span class="trust-sep">·</span>
+    <span><i data-lucide="truck"></i> Ships nationwide</span>
+    <span class="trust-sep">·</span>
+    <span><i data-lucide="shield-check"></i> Water-tested before listing</span>
   </div>
   <div class="engines-grid">
 
@@ -1194,7 +1226,7 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="f-logo">BOAT <span>DOCTOR</span></div>
+    <img src="images/that-boat-doctor-logo-light.png" alt="That Boat Doctor" style="width:160px;max-width:60%;display:block;margin-bottom:1.2rem;">
     <p class="f-tagline">"Restoring forgotten boats one video at a time. A community for boaters and our problems."</p>
     <div class="f-socials">
       <a href="https://www.instagram.com/thatboatdoctor" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1369,6 +1401,41 @@
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
   lucide.createIcons();
+
+  // Scroll reveal animations
+  const revealTargets = document.querySelectorAll(
+    '.process-header, .p-card, .section-header, .engines-trust, .e-card, .merch-grid, .about-vis, .about-content, .reviews-header, .reviews-grid, .social .section-label, .social .section-title, .social-sub, .social-cards'
+  );
+  revealTargets.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4 * 0.08) + 's';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealTargets.forEach(el => observer.observe(el));
+
+  // Graceful fallback for any missing product image
+  document.querySelectorAll('.e-img img, .m-img img, .about-box img').forEach(img => {
+    img.addEventListener('error', function() {
+      const wrap = this.parentElement;
+      this.style.display = 'none';
+      if (!wrap.querySelector('.img-fallback')) {
+        const ph = document.createElement('div');
+        ph.className = 'img-fallback';
+        ph.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#122240,#1a3155);';
+        ph.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
+        wrap.appendChild(ph);
+      }
+    });
+  });
 </script>
 
 </body>
