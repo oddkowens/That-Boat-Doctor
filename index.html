@@ -959,6 +959,19 @@
     .modal-specs-grid { grid-template-columns: 1fr 1fr; }
     .f-bottom { flex-direction:column; gap:.4rem; padding:1rem 1.5rem; text-align:center; }
     .reviews-header { flex-direction: column; align-items: flex-start; }
+    /* Mobile announce bar */
+    .announce {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 0.45rem 1rem;
+    }
+    .announce-extra { display: none; }
+    /* Mobile nav CTA */
+    .nav-cta {
+      font-size: 0.78rem;
+      padding: 0.45rem 1rem;
+      letter-spacing: 0.08em;
+    }
   }
 
   @media(max-width:600px){
@@ -974,7 +987,7 @@
 
 <!-- Announce Bar -->
 <div class="announce">
-  <i data-lucide="wrench"></i> New Listing: Yamaha 150HP 4-Stroke &nbsp;<span class="gold">·</span>&nbsp; Free shipping on merch over $75 &nbsp;<span class="gold">·</span>&nbsp; DM on Instagram to inquire
+  <i data-lucide="wrench"></i> New Listing: Yamaha 150HP 4-Stroke <span class="gold announce-extra">&nbsp;·&nbsp; Free shipping on merch over $75 &nbsp;·&nbsp; DM on Instagram to inquire</span>
 </div>
 
 <!-- Nav -->
