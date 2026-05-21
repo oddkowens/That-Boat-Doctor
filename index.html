@@ -770,6 +770,16 @@
 
   hr { border:none; height:1.5px; background:var(--light-gray); }
 
+  /* LUCIDE ICONS */
+  .p-icon i { width:28px; height:28px; stroke:var(--navy); stroke-width:1.5; display:block; }
+  .p-card:hover .p-icon i { stroke:var(--red); }
+  .s-icon i { width:34px; height:34px; stroke:var(--navy); stroke-width:1.5; display:block; }
+  .f-socials a i { width:16px; height:16px; display:block; }
+  .star i { width:18px; height:18px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; vertical-align:middle; }
+  .r-stars i { width:15px; height:15px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; }
+  .r-badge i { width:11px; height:11px; stroke:var(--red); stroke-width:2.5; display:inline-block; vertical-align:middle; }
+  .announce i { width:13px; height:13px; stroke:white; stroke-width:2; display:inline-block; vertical-align:middle; margin-right:0.3rem; }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from{opacity:0;transform:translateY(22px)}
@@ -812,7 +822,7 @@
 
 <!-- Announce Bar -->
 <div class="announce">
-  🔧 New Listing: Yamaha 150HP 4-Stroke &nbsp;<span class="gold">·</span>&nbsp; Free shipping on merch over $75 &nbsp;<span class="gold">·</span>&nbsp; DM on Instagram to inquire
+  <i data-lucide="wrench"></i> New Listing: Yamaha 150HP 4-Stroke &nbsp;<span class="gold">·</span>&nbsp; Free shipping on merch over $75 &nbsp;<span class="gold">·</span>&nbsp; DM on Instagram to inquire
 </div>
 
 <!-- Nav -->
@@ -908,25 +918,25 @@
   <div class="process-grid">
     <div class="p-card">
       <div class="p-num">01</div>
-      <div class="p-icon">🔍</div>
+      <div class="p-icon"><i data-lucide="search"></i></div>
       <div class="p-title">Find It</div>
       <p class="p-desc">Sourced from docks, auctions, and private sellers. The worse it looks, the more interested we are.</p>
     </div>
     <div class="p-card">
       <div class="p-num">02</div>
-      <div class="p-icon">🩺</div>
+      <div class="p-icon"><i data-lucide="stethoscope"></i></div>
       <div class="p-title">Diagnose It</div>
       <p class="p-desc">Full teardown and inspection. We find what everyone else missed — and document every bit of it on camera.</p>
     </div>
     <div class="p-card">
       <div class="p-num">03</div>
-      <div class="p-icon">🔧</div>
+      <div class="p-icon"><i data-lucide="wrench"></i></div>
       <div class="p-title">Fix It Right</div>
       <p class="p-desc">No shortcuts. Quality parts, proper technique, and a running engine before it ever leaves the shop.</p>
     </div>
     <div class="p-card">
       <div class="p-num">04</div>
-      <div class="p-icon">🌊</div>
+      <div class="p-icon"><i data-lucide="waves"></i></div>
       <div class="p-title">Flip It</div>
       <p class="p-desc">Priced fair, history disclosed. You get a shop-quality engine at a used engine price — every time.</p>
     </div>
@@ -1104,7 +1114,7 @@
       <div class="reviews-big-num">5.0</div>
       <div class="reviews-stars-wrap">
         <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span>
         </div>
         <div class="reviews-count">Based on 80+ verified sales</div>
       </div>
@@ -1114,7 +1124,7 @@
 
     <div class="r-card">
       <div class="r-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span>
       </div>
       <p class="r-quote">Bought the Mercury 90 — fired right up on the first pull. Exactly what was described, zero surprises. This guy is the real deal.</p>
       <div class="r-author">
@@ -1122,14 +1132,14 @@
         <div>
           <div class="r-name">Jake T.</div>
           <div class="r-detail">Mercury 90HP · Florida</div>
-          <div class="r-badge">✔ Verified Buyer</div>
+          <div class="r-badge"><i data-lucide="check"></i> Verified Buyer</div>
         </div>
       </div>
     </div>
 
     <div class="r-card">
       <div class="r-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span>
       </div>
       <p class="r-quote">Shipped fast, packed well, and ran perfect on the water. Full repair history included — you don't see that anywhere else. Will buy again.</p>
       <div class="r-author">
@@ -1137,14 +1147,14 @@
         <div>
           <div class="r-name">Mike R.</div>
           <div class="r-detail">Yamaha 150HP · Georgia</div>
-          <div class="r-badge">✔ Verified Buyer</div>
+          <div class="r-badge"><i data-lucide="check"></i> Verified Buyer</div>
         </div>
       </div>
     </div>
 
     <div class="r-card">
       <div class="r-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span><span class="star"><i data-lucide="star"></i></span>
       </div>
       <p class="r-quote">Answered every question fast, sent extra photos, and even sent a video of the splash test. Couldn't ask for more transparency. Highly recommend.</p>
       <div class="r-author">
@@ -1152,7 +1162,7 @@
         <div>
           <div class="r-name">Chris L.</div>
           <div class="r-detail">Evinrude 115HP · South Carolina</div>
-          <div class="r-badge">✔ Verified Buyer</div>
+          <div class="r-badge"><i data-lucide="check"></i> Verified Buyer</div>
         </div>
       </div>
     </div>
@@ -1167,19 +1177,19 @@
   <p class="social-sub">Every teardown, rebuild, and water test — documented start to finish. Join the community.</p>
   <div class="social-cards">
     <a class="s-card" href="https://www.instagram.com/thatboatdoctor" target="_blank">
-      <div class="s-icon">📸</div>
+      <div class="s-icon"><i data-lucide="instagram"></i></div>
       <div class="s-platform">Instagram</div>
       <div class="s-handle">@thatboatdoctor</div>
       <div class="s-cta">Follow →</div>
     </a>
     <a class="s-card" href="https://youtube.com/@boatdoctor" target="_blank">
-      <div class="s-icon">▶️</div>
+      <div class="s-icon"><i data-lucide="youtube"></i></div>
       <div class="s-platform">YouTube</div>
       <div class="s-handle">@boatdoctor</div>
       <div class="s-cta">Subscribe →</div>
     </a>
     <a class="s-card" href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">
-      <div class="s-icon">👥</div>
+      <div class="s-icon"><i data-lucide="facebook"></i></div>
       <div class="s-platform">Facebook</div>
       <div class="s-handle">That Boat Doctor</div>
       <div class="s-cta">Join →</div>
@@ -1193,9 +1203,9 @@
     <div class="f-logo">BOAT <span>DOCTOR</span></div>
     <p class="f-tagline">"Restoring forgotten boats one video at a time. A community for boaters and our problems."</p>
     <div class="f-socials">
-      <a href="https://www.instagram.com/thatboatdoctor" target="_blank">📸</a>
-      <a href="https://youtube.com/@boatdoctor" target="_blank">▶</a>
-      <a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">f</a>
+      <a href="https://www.instagram.com/thatboatdoctor" target="_blank"><i data-lucide="instagram"></i></a>
+      <a href="https://youtube.com/@boatdoctor" target="_blank"><i data-lucide="youtube"></i></a>
+      <a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank"><i data-lucide="facebook"></i></a>
     </div>
   </div>
   <div class="f-col">
@@ -1360,6 +1370,11 @@
       document.body.style.overflow = '';
     });
   });
+</script>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+  lucide.createIcons();
 </script>
 
 </body>
