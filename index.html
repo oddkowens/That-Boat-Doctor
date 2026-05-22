@@ -200,86 +200,119 @@
   .hero-logo-area { display: none; }
   .hero-sub-label { display: none; }
 
-  /* HERO CONTENT GRID */
-  .hero-content-grid {
+  /* HERO RIGHT PANEL */
+  .hero-panel {
     position: relative; z-index: 2;
-    width: calc(100% - 4rem);
+    width: calc(100% - 5rem);
     display: flex; flex-direction: column;
-    gap: 0.6rem; padding: 2.5rem 0;
+    gap: 0;
   }
-  .hero-grid-label {
+  .hero-panel-zone {
+    padding: 1.8rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-panel-zone:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-panel-tag {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 0.7rem;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 0.4rem;
-    display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; font-size: 0.65rem;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
   }
-  .hero-grid-label::before {
+  .hero-panel-tag::before {
     content: ''; display: block;
-    width: 18px; height: 1px;
-    background: rgba(255,255,255,0.25);
+    width: 16px; height: 2px; background: var(--gold);
   }
-  .hero-reels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
+
+  /* Zone 1 — Content */
+  .hero-videos { display: flex; flex-direction: column; gap: 0.6rem; }
+  .hero-video-row {
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 1rem;
+    text-decoration: none;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
+    group: true;
   }
-  .hero-reel-main { grid-row: span 2; }
-  .hero-reel {
-    position: relative; overflow: hidden;
-    display: block; text-decoration: none;
-    background: var(--navy-mid);
-  }
-  .hero-reel img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    opacity: 0.88;
-  }
-  .hero-reel:hover img { transform: scale(1.04); opacity: 1; }
-  .hero-reel-main img { aspect-ratio: 9/14; }
-  .hero-reel-secondary img { aspect-ratio: 9/7; }
-  .hero-reel-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,20,36,0.92) 0%, rgba(10,20,36,0.15) 55%, transparent 100%);
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 1rem;
-  }
-  .hero-reel-views {
+  .hero-video-row:last-child { border-bottom: none; }
+  .hero-video-row:hover .hero-video-title { color: var(--white); }
+  .hero-video-row:hover .hero-video-count { color: var(--white); }
+  .hero-video-left { display: flex; align-items: baseline; gap: 0.75rem; flex: 1; min-width: 0; }
+  .hero-video-count {
     font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.04em; color: var(--white);
-    display: flex; align-items: baseline; gap: 0.3rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.6rem; color: var(--white);
+    line-height: 1; white-space: nowrap;
+    transition: color 0.2s;
+    flex-shrink: 0;
   }
-  .hero-reel-main .hero-reel-views { font-size: 2.6rem; line-height: 1; }
-  .hero-reel-secondary .hero-reel-views { font-size: 1.6rem; line-height: 1; }
-  .hero-reel-views-label {
+  .hero-video-count span {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    margin-left: 0.2rem;
   }
-  .hero-reel-title {
+  .hero-video-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600; color: rgba(255,255,255,0.75);
-    line-height: 1.3;
+    font-size: 0.9rem; font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.3; transition: color 0.2s;
   }
-  .hero-reel-main .hero-reel-title { font-size: 0.95rem; }
-  .hero-reel-secondary .hero-reel-title { font-size: 0.8rem; }
-  .hero-reel-play {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.15);
-    border: 1.5px solid rgba(255,255,255,0.3);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
+  .hero-video-arrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; color: rgba(255,255,255,0.2);
+    transition: color 0.2s; flex-shrink: 0;
   }
-  .hero-reel-main .hero-reel-play { width: 48px; height: 48px; }
-  .hero-reel:hover .hero-reel-play { background: var(--red); border-color: var(--red); }
-  .hero-reel-play svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
-  .hero-reel-main .hero-reel-play svg { width: 18px; height: 18px; }
+  .hero-video-row:hover .hero-video-arrow { color: var(--red); }
+
+  /* Zone 2 — Engine */
+  .hero-engine-row {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-engine-make {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--red);
+    font-weight: 700; margin-bottom: 0.2rem;
+  }
+  .hero-engine-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; color: var(--white);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .hero-engine-specs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0; }
+  .hero-engine-spec {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.15rem 0.5rem;
+  }
+  .hero-engine-right { text-align: right; }
+  .hero-engine-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem; color: var(--white);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+
+  /* Zone 3 — Merch */
+  .hero-merch-row {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem;
+  }
+  .hero-merch-left {}
+  .hero-merch-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; color: var(--white); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .hero-merch-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
   .hero-mobile-logo { display: none; }
   .hero-mobile-text { display: none; }
   .hero-content-group { display: contents; }
@@ -1230,7 +1263,7 @@
     .drawer-overlay { display: block; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-right { display: none; }
-    .hero-content-grid { display: none; }
+    .hero-panel { display: none; }
     .hero-left {
       padding: 4rem 1.5rem 0;
       min-height: calc(100svh - 36px - 64px);
@@ -1396,47 +1429,68 @@
     <img src="images/hero-bg.jpg" class="hero-right-img" alt="That Boat Doctor workshop">
     <div class="hero-right-pattern"></div>
     <div class="hero-right-overlay"></div>
-    <div class="hero-content-grid">
-      <div class="hero-grid-label">Watch the Builds</div>
-      <div class="hero-reels">
+    <div class="hero-panel">
 
-        <!-- Dominant reel -->
-        <a class="hero-reel hero-reel-main" href="https://www.facebook.com/reel/1661100335057826" target="_blank" rel="noopener">
-          <img src="images/reel-400-boat.jpg" alt="Restoring a $400 Boat">
-          <div class="hero-reel-play">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="hero-reel-overlay">
-            <div class="hero-reel-views">2M <span class="hero-reel-views-label">Views</span></div>
-            <div class="hero-reel-title">Restoring a $400 Boat</div>
-          </div>
-        </a>
-
-        <!-- Secondary reels stacked -->
-        <div style="display:flex;flex-direction:column;gap:0.6rem;">
-          <a class="hero-reel hero-reel-secondary" href="https://www.facebook.com/reel/2027279711462714" target="_blank" rel="noopener">
-            <img src="images/reel-marketplace.jpg" alt="Why I Stopped Buying on Facebook Marketplace">
-            <div class="hero-reel-play">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+      <!-- Zone 1: Content -->
+      <div class="hero-panel-zone">
+        <div class="hero-panel-tag">Watch the Builds</div>
+        <div class="hero-videos">
+          <a class="hero-video-row" href="https://www.facebook.com/reel/1661100335057826" target="_blank" rel="noopener">
+            <div class="hero-video-left">
+              <div class="hero-video-count">2M<span>Views</span></div>
+              <div class="hero-video-title">Restoring a $400 Boat</div>
             </div>
-            <div class="hero-reel-overlay">
-              <div class="hero-reel-views">1.4M <span class="hero-reel-views-label">Views</span></div>
-              <div class="hero-reel-title">Why I Stopped Buying on Marketplace</div>
-            </div>
+            <div class="hero-video-arrow">→</div>
           </a>
-          <a class="hero-reel hero-reel-secondary" href="https://www.facebook.com/reel/2242911509813365" target="_blank" rel="noopener">
-            <img src="images/reel-flipping-22.jpg" alt="How I Started Flipping Boats at 22">
-            <div class="hero-reel-play">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+          <a class="hero-video-row" href="https://www.facebook.com/reel/2027279711462714" target="_blank" rel="noopener">
+            <div class="hero-video-left">
+              <div class="hero-video-count">1.4M<span>Views</span></div>
+              <div class="hero-video-title">Why I Stopped Buying on Marketplace</div>
             </div>
-            <div class="hero-reel-overlay">
-              <div class="hero-reel-views">1.4M <span class="hero-reel-views-label">Views</span></div>
-              <div class="hero-reel-title">How I Started Flipping Boats at 22</div>
+            <div class="hero-video-arrow">→</div>
+          </a>
+          <a class="hero-video-row" href="https://www.facebook.com/reel/2242911509813365" target="_blank" rel="noopener">
+            <div class="hero-video-left">
+              <div class="hero-video-count">1.4M<span>Views</span></div>
+              <div class="hero-video-title">How I Started Flipping Boats at 22</div>
             </div>
+            <div class="hero-video-arrow">→</div>
           </a>
         </div>
-
       </div>
+
+      <!-- Zone 2: Latest Engine -->
+      <div class="hero-panel-zone">
+        <div class="hero-panel-tag">Latest Engine</div>
+        <div class="hero-engine-row">
+          <div class="hero-engine-left">
+            <div class="hero-engine-make">Yamaha</div>
+            <div class="hero-engine-name">150 HP 4-Stroke</div>
+            <div class="hero-engine-specs">
+              <span class="hero-engine-spec">2018</span>
+              <span class="hero-engine-spec">Rebuilt</span>
+              <span class="hero-engine-spec">Water Tested</span>
+            </div>
+          </div>
+          <div class="hero-engine-right">
+            <div class="hero-engine-price">$3,800</div>
+            <button class="btn-sm-red" onclick="openModal('yamaha')">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone 3: Merch -->
+      <div class="hero-panel-zone">
+        <div class="hero-panel-tag">Official Gear</div>
+        <div class="hero-merch-row">
+          <div class="hero-merch-left">
+            <div class="hero-merch-name">That Boat Doctor Merch</div>
+            <div class="hero-merch-sub">Tees · Caps · Hoodies · Stickers</div>
+          </div>
+          <a href="#merch" class="btn-sm-red">Shop Now</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
