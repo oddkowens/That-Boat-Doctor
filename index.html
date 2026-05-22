@@ -124,20 +124,21 @@
     box-shadow: -8px 0 40px rgba(18,34,64,0.15);
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    border-radius: 20px 0 0 20px;
+    border-radius: 0;
   }
   .mobile-drawer.open { transform: translateX(0); }
   .drawer-overlay {
-    display: none;
+    display: block;
     position: fixed; inset: 0;
     background: rgba(18,34,64,0.45);
     z-index: 199;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }
-  .drawer-overlay.open { opacity: 1; }
+  .drawer-overlay.open { opacity: 1; pointer-events: auto; }
   .mobile-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
   .mobile-drawer ul li a {
     font-family: 'Barlow Condensed', sans-serif;
@@ -876,6 +877,7 @@
     position: fixed; top: 0; left: 0; height: 3px;
     background: var(--red); width: 0%; z-index: 300;
     transition: width 0.1s linear;
+    pointer-events: none;
   }
 
   /* NAV SHRINK ON SCROLL */
@@ -1621,6 +1623,15 @@
 
   hamburger.addEventListener('click', toggleDrawer);
   overlay.addEventListener('click', toggleDrawer);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
 
   document.querySelectorAll('.drawer-link').forEach(link => {
     link.addEventListener('click', () => {
