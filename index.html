@@ -15,6 +15,7 @@
     --red: #cc2222;
     --red-dark: #a81a1a;
     --red-light: #fdf0f0;
+    --gold: #f4c84a;
     --white: #ffffff;
     --off-white: #fbfbfd;
     --light-gray: #e8e8e8;
@@ -44,7 +45,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
-  .announce .gold { color: #f4c84a; }
+  .announce .gold { color: var(--gold); }
 
   /* NAV */
   nav {
@@ -560,6 +561,99 @@
   }
   .modal-actions { display: flex; gap: 0.75rem; }
 
+  /* MERCH MODAL */
+  .mmodal-bg {
+    display: none;
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(10,20,36,0.75);
+    align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .mmodal-bg.open { display: flex; }
+  .mmodal {
+    background: var(--white);
+    max-width: 680px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.35s ease both;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .mmodal-img-wrap {
+    position: relative; overflow: hidden;
+    background: var(--off-white);
+    min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mmodal-img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .mmodal-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.22rem 0.65rem;
+    background: var(--gold); color: var(--navy);
+  }
+  .mmodal-body { padding: 2.2rem; display: flex; flex-direction: column; }
+  .mmodal-category {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--red); font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .mmodal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem; color: var(--navy); line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .mmodal-desc {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+    margin-bottom: 1.5rem; flex: 1;
+  }
+  .mmodal-size-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .mmodal-sizes {
+    display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .mmodal-size {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    border: 1.5px solid var(--light-gray);
+    padding: 0.4rem 0.75rem;
+    cursor: pointer; color: var(--navy);
+    background: var(--white);
+    transition: all 0.15s;
+  }
+  .mmodal-size:hover { border-color: var(--navy); }
+  .mmodal-size.selected { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .mmodal-foot {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding-top: 1.2rem;
+    border-top: 1.5px solid var(--light-gray);
+    gap: 1rem;
+  }
+  .mmodal-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; color: var(--navy); line-height: 1;
+  }
+  .mmodal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 10;
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.9);
+    border: none; cursor: pointer;
+    font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .mmodal-close:hover { background: var(--red); color: var(--white); }
+
   /* MERCH */
   .merch { padding: 7rem 5rem; background: var(--white); }
   .merch-grid {
@@ -600,7 +694,7 @@
     font-family:'Barlow Condensed',sans-serif;
     font-weight:700; font-size:0.65rem; letter-spacing:0.1em;
     text-transform:uppercase; padding:0.22rem 0.65rem;
-    background:#f4c84a; color:var(--navy);
+    background:var(--gold); color:var(--navy);
   }
   .m-body { padding: 1.2rem 1.5rem; }
   .m-name {
@@ -686,7 +780,7 @@
   }
   .reviews-stars-wrap { display: flex; flex-direction: column; gap: 0.4rem; }
   .stars { display: flex; gap: 3px; }
-  .star { color: #f4c84a; font-size: 1.1rem; }
+  .star { color: var(--gold); font-size: 1.1rem; }
   .reviews-count {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.78rem; letter-spacing: 0.15em;
@@ -749,7 +843,7 @@
     display: inline-flex; align-items: center; gap: 0.3rem;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.65rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: #f4c84a; font-weight: 700;
+    text-transform: uppercase; color: var(--gold); font-weight: 700;
     margin-top: 0.3rem; align-self: flex-start;
   }
 
@@ -814,10 +908,10 @@
   .s-cta {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
     font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--red); margin-top: 1rem;
+    color: var(--gold); margin-top: 1rem;
     display: flex; align-items: center; gap: 0.4rem;
   }
-  .s-cta svg { width: 12px; height: 12px; stroke: var(--red); stroke-width: 2.5; transition: transform 0.2s; }
+  .s-cta svg { width: 12px; height: 12px; stroke: var(--gold); stroke-width: 2.5; transition: transform 0.2s; }
   .s-card:hover .s-cta svg { transform: translateX(3px); }
 
   /* CONTACT */
@@ -949,8 +1043,8 @@
   .p-icon svg { width:34px; height:34px; stroke:#ffffff; stroke-width:1.5; display:block; }
   .p-card:hover .p-icon svg { stroke:#ffffff; }
   .f-socials a svg { width:16px; height:16px; display:block; }
-  .star svg { width:18px; height:18px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; vertical-align:middle; }
-  .r-stars svg { width:15px; height:15px; fill:#f4c84a; stroke:#f4c84a; display:inline-block; }
+  .star svg { width:18px; height:18px; fill:var(--gold); stroke:var(--gold); display:inline-block; vertical-align:middle; }
+  .r-stars svg { width:15px; height:15px; fill:var(--gold); stroke:var(--gold); display:inline-block; }
   .r-badge svg { width:11px; height:11px; stroke:var(--red); stroke-width:2.5; display:inline-block; vertical-align:middle; }
   .announce svg { width:13px; height:13px; stroke:white; stroke-width:2; display:inline-block; vertical-align:middle; margin-right:0.3rem; }
 
@@ -1119,8 +1213,14 @@
     .process,.engines,.merch,.about,.social,.reviews,.contact { padding: 4rem 1.5rem; }
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     .form-row { grid-template-columns: 1fr; }
-    .social-grid { grid-template-columns: 1fr 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
     .social-header-right { text-align: left; max-width: 100%; }
+    .modal-foot { flex-direction: column; }
+    .modal-actions { flex-direction: column; width: 100%; }
+    .modal-actions a { width: 100%; text-align: center; }
+    .mmodal { grid-template-columns: 1fr; }
+    .mmodal-img-wrap { min-height: 220px; }
+    .mmodal-body { padding: 1.5rem; }
     footer { padding: 4rem 1.5rem; grid-template-columns: 1fr 1fr; }
     .process-grid { grid-template-columns: 1fr 1fr; }
     .p-card { border-right: none; border-bottom: 1.5px solid var(--light-gray); }
@@ -1214,7 +1314,7 @@
     </div>
     <div class="hero-stats">
       <div><div class="stat-num"><span class="counter" data-count="100" data-suffix="+">0</span></div><div class="stat-label">Engines Flipped</div></div>
-      <div><div class="stat-num"><span class="counter" data-count="5" data-decimals="1">0.0</span><span style="color:#f4c84a;font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
+      <div><div class="stat-num"><span class="counter" data-count="5" data-decimals="1">0.0</span><span style="color:var(--gold);font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
       <div><div class="stat-num"><span class="counter" data-count="113" data-suffix="K+">0</span></div><div class="stat-label">Total Followers</div></div>
     </div>
   </div>
@@ -1386,50 +1486,63 @@
   </div>
   <div class="merch-grid">
 
-    <div class="m-card">
+    <div class="m-card" onclick="openMerchModal('tee')" style="cursor:pointer;">
       <div class="m-img dark">
         <img src="images/merch-tee.jpg" alt="That Boat Doctor Tee">
         <div class="m-tag">Bestseller</div>
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Item</span></div>
       </div>
       <div class="m-body">
         <div class="m-name">That Boat Doctor Tee</div>
-        <div class="m-foot"><span class="m-price">$28</span><button class="btn-sm-navy">Add to Cart</button></div>
+        <div class="m-foot"><span class="m-price">$28</span><button class="btn-sm-navy">View Details</button></div>
       </div>
     </div>
 
-    <div class="m-card">
+    <div class="m-card" onclick="openMerchModal('cap')" style="cursor:pointer;">
       <div class="m-img light">
         <img src="images/merch-cap.jpg" alt="Snapback Cap">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Item</span></div>
       </div>
       <div class="m-body">
         <div class="m-name">Snapback Cap</div>
-        <div class="m-foot"><span class="m-price">$32</span><button class="btn-sm-navy">Add to Cart</button></div>
+        <div class="m-foot"><span class="m-price">$32</span><button class="btn-sm-navy">View Details</button></div>
       </div>
     </div>
 
-    <div class="m-card">
+    <div class="m-card" onclick="openMerchModal('hoodie')" style="cursor:pointer;">
       <div class="m-img dark">
         <img src="images/merch-hoodie.jpg" alt="Boat Doc Hoodie">
         <div class="m-tag">New</div>
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Item</span></div>
       </div>
       <div class="m-body">
         <div class="m-name">Boat Doc Hoodie</div>
-        <div class="m-foot"><span class="m-price">$55</span><button class="btn-sm-navy">Add to Cart</button></div>
+        <div class="m-foot"><span class="m-price">$55</span><button class="btn-sm-navy">View Details</button></div>
       </div>
     </div>
 
-    <div class="m-card">
+    <div class="m-card" onclick="openMerchModal('stickers')" style="cursor:pointer;">
       <div class="m-img pale-blue">
         <img src="images/merch-stickers.jpg" alt="Sticker Pack">
+        <div class="e-img-overlay"><span><i data-lucide="eye"></i> View Item</span></div>
       </div>
       <div class="m-body">
         <div class="m-name">Sticker Pack (5-pack)</div>
-        <div class="m-foot"><span class="m-price">$12</span><button class="btn-sm-navy">Add to Cart</button></div>
+        <div class="m-foot"><span class="m-price">$12</span><button class="btn-sm-navy">View Details</button></div>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- MERCH MODAL -->
+<div class="mmodal-bg" id="mmodalBg" onclick="closeMerchModalOnBg(event)">
+  <div class="mmodal" id="mmodalContent">
+    <button class="mmodal-close" onclick="closeMerchModal()">✕</button>
+    <div class="mmodal-img-wrap" id="mmodalImgWrap"></div>
+    <div class="mmodal-body" id="mmodalBody"></div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -1821,7 +1934,88 @@
     if (e.target === document.getElementById('modalBg')) closeModal();
   }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeMerchModal(); } });
+
+  // Merch data for modals
+  const merchItems = {
+    tee: {
+      name: 'That Boat Doctor Tee',
+      category: 'Apparel',
+      price: '$28',
+      img: 'images/merch-tee.jpg',
+      tag: 'Bestseller',
+      sizes: ['S','M','L','XL','2XL'],
+      desc: '100% heavyweight cotton tee with the That Boat Doctor logo screen-printed on the chest. Pre-shrunk, unisex fit. The go-to for anyone who spends their weekends elbow-deep in an outboard.'
+    },
+    cap: {
+      name: 'Snapback Cap',
+      category: 'Headwear',
+      price: '$32',
+      img: 'images/merch-cap.jpg',
+      tag: null,
+      sizes: ['One Size'],
+      desc: 'Structured 6-panel snapback with embroidered That Boat Doctor logo on the front. Adjustable snap closure fits most. Built to survive the dock, the boat, and the shop.'
+    },
+    hoodie: {
+      name: 'Boat Doc Hoodie',
+      category: 'Apparel',
+      price: '$55',
+      img: 'images/merch-hoodie.jpg',
+      tag: 'New',
+      sizes: ['S','M','L','XL','2XL'],
+      desc: 'Midweight pullover hoodie with a front kangaroo pocket and embroidered logo. Soft fleece lining — warm enough for early morning launches, comfortable enough for the rest of the day.'
+    },
+    stickers: {
+      name: 'Sticker Pack',
+      category: 'Accessories',
+      price: '$12',
+      img: 'images/merch-stickers.jpg',
+      tag: null,
+      sizes: null,
+      desc: '5-pack of That Boat Doctor vinyl stickers in assorted designs. Waterproof, UV-resistant, and built to live on your boat, cooler, toolbox, or truck. Stick \'em anywhere.'
+    }
+  };
+
+  function openMerchModal(key) {
+    const m = merchItems[key];
+    const tagHtml = m.tag ? `<div class="mmodal-tag">${m.tag}</div>` : '';
+    const sizesHtml = m.sizes ? `
+      <div class="mmodal-size-label">Size</div>
+      <div class="mmodal-sizes">
+        ${m.sizes.map((s, i) => `<div class="mmodal-size${i === 0 ? ' selected' : ''}" onclick="selectSize(this)">${s}</div>`).join('')}
+      </div>` : '';
+
+    document.getElementById('mmodalImgWrap').innerHTML = `
+      <img src="${m.img}" class="mmodal-img" alt="${m.name}" onerror="this.style.display='none'">
+      ${tagHtml}
+    `;
+    document.getElementById('mmodalBody').innerHTML = `
+      <div class="mmodal-category">${m.category}</div>
+      <div class="mmodal-title">${m.name}</div>
+      <p class="mmodal-desc">${m.desc}</p>
+      ${sizesHtml}
+      <div class="mmodal-foot">
+        <div class="mmodal-price">${m.price}</div>
+        <button class="btn-red" onclick="closeMerchModal()">Add to Cart</button>
+      </div>
+    `;
+    document.getElementById('mmodalBg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function selectSize(el) {
+    el.closest('.mmodal-sizes').querySelectorAll('.mmodal-size').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function closeMerchModal() {
+    document.getElementById('mmodalBg').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeMerchModalOnBg(e) {
+    if (e.target === document.getElementById('mmodalBg')) closeMerchModal();
+  }
 
   // Mobile nav
   const hamburger = document.getElementById('hamburger');
