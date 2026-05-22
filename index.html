@@ -84,7 +84,6 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--white); background: var(--red);
     border: none; padding: 0.6rem 1.6rem;
-    border-radius: 6px;
     cursor: pointer; text-decoration: none;
     transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
     display: inline-block;
@@ -124,7 +123,6 @@
     box-shadow: -8px 0 40px rgba(18,34,64,0.15);
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    border-radius: 0;
   }
   .mobile-drawer.open { transform: translateX(0); }
   .drawer-overlay {
@@ -157,7 +155,6 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--white); background: var(--red);
     border: none; padding: 1rem 2rem;
-    border-radius: 8px;
     cursor: pointer; text-decoration: none;
     display: block; text-align: center;
     box-shadow: 0 2px 12px rgba(204,34,34,0.28);
@@ -244,7 +241,7 @@
     font-weight: 700; font-size: 1rem;
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--white); background: var(--red); border: none;
-    padding: 0.9rem 2.2rem; border-radius: 6px;
+    padding: 0.9rem 2.2rem;
     cursor: pointer; text-decoration: none;
     display: inline-block;
     box-shadow: 0 2px 12px rgba(204,34,34,0.28);
@@ -257,7 +254,7 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--navy); background: transparent;
     border: 1.5px solid rgba(18,34,64,0.3);
-    padding: 0.9rem 2.2rem; border-radius: 6px;
+    padding: 0.9rem 2.2rem;
     cursor: pointer; text-decoration: none;
     display: inline-block; transition: all 0.4s ease;
   }
@@ -389,7 +386,6 @@
   }
   .e-card {
     background: var(--white); overflow: hidden;
-    border-radius: 12px;
     border: 1px solid rgba(18,34,64,0.07);
     box-shadow: 0 2px 16px rgba(18,34,64,0.06);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -480,7 +476,6 @@
     max-width: 800px; width: 100%;
     max-height: 90vh; overflow-y: auto;
     position: relative;
-    border-radius: 16px;
     animation: modalIn 0.35s ease both;
   }
   @keyframes modalIn {
@@ -574,7 +569,6 @@
   }
   .m-card {
     background: var(--white); overflow: hidden;
-    border-radius: 12px;
     border: 1px solid rgba(18,34,64,0.07);
     box-shadow: 0 2px 16px rgba(18,34,64,0.06);
     transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer;
@@ -708,7 +702,6 @@
     padding: 0;
     position: relative; overflow: hidden;
     display: flex; flex-direction: column;
-    border-radius: 12px;
     border: 1px solid rgba(18,34,64,0.07);
     box-shadow: 0 2px 16px rgba(18,34,64,0.06);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -734,7 +727,7 @@
     background: var(--navy);
   }
   .r-avatar {
-    width: 38px; height: 38px; border-radius: 50%;
+    width: 38px; height: 38px;
     background: rgba(255,255,255,0.1);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
@@ -761,44 +754,154 @@
   }
 
   /* SOCIAL */
-  .social { padding:6rem 5rem; background: var(--white); text-align:center; }
-  .social .section-label { justify-content:center; }
-  .social .section-label::before { background: var(--red); }
-  .social .section-title { margin-bottom:0.75rem; color: var(--navy); }
-  .social-sub { font-size:.95rem; color:var(--muted); max-width:460px; margin:0 auto 3rem; }
-  .social-cards { display:flex; gap:3px; justify-content:center; flex-wrap:wrap; }
+  .social { padding: 7rem 5rem; background: var(--off-white); }
+  .social-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .social-header-right {
+    font-size: 0.95rem; color: var(--muted);
+    max-width: 340px; line-height: 1.7; text-align: right;
+  }
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px; background: var(--navy);
+  }
   .s-card {
     background: var(--navy);
-    border: none;
-    padding: 3rem 2.4rem; width: 230px; text-align: center;
-    text-decoration: none; display: flex; flex-direction: column;
-    align-items: center; gap: .6rem;
-    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    text-decoration: none;
+    display: flex; flex-direction: column;
     position: relative; overflow: hidden;
-    background-image: linear-gradient(rgba(18,34,64,0.84),rgba(18,34,64,0.84));
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
-  .s-card::before {
-    content:''; position:absolute; top:0; left:0; width:4px; height:100%;
-    background: var(--red); transform:scaleY(0); transform-origin:bottom;
-    transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+  .s-card:hover { background-color: #1c3260; border-top-color: var(--red); }
+  .s-card-top {
+    padding: 2.2rem 2rem 1.4rem;
+    display: flex; align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .s-card:hover::before { transform: scaleY(1); }
-  .s-card:hover { background-color: #1c3260; transform: translateY(-4px); }
-  .s-card:hover svg { stroke: var(--white); }
-  .s-icon { font-size:2rem; }
+  .s-icon svg { display: block; }
+  .s-follower-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem; color: var(--white);
+    line-height: 1; text-align: right;
+  }
+  .s-follower-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: right; margin-top: 0.15rem;
+  }
+  .s-card-body { padding: 1.4rem 2rem 2rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
   .s-platform {
-    font-family:'Barlow Condensed',sans-serif; font-weight:700;
-    font-size:0.75rem; letter-spacing:.2em; text-transform:uppercase;
-    color: rgba(255,255,255,0.45);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
   }
   .s-handle {
-    font-family:'Barlow Condensed',sans-serif; font-size:.88rem;
-    color: var(--white); font-weight:600;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem; color: var(--white);
+    line-height: 1; letter-spacing: 0.03em;
+  }
+  .s-format {
+    font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    line-height: 1.55; margin-top: 0.3rem; flex: 1;
   }
   .s-cta {
-    font-family:'Barlow Condensed',sans-serif; font-weight:700;
-    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
-    color: rgba(255,255,255,0.4); margin-top:.15rem;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); margin-top: 1rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .s-cta svg { width: 12px; height: 12px; stroke: var(--red); stroke-width: 2.5; transition: transform 0.2s; }
+  .s-card:hover .s-cta svg { transform: translateX(3px); }
+
+  /* CONTACT */
+  .contact { padding: 7rem 5rem; background: var(--navy); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: start;
+  }
+  .contact-left .section-label { color: rgba(255,255,255,0.45); }
+  .contact-left .section-label::before { background: rgba(255,255,255,0.25); }
+  .contact-left .section-title { color: var(--white); margin-bottom: 1.2rem; }
+  .contact-left p {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5);
+    line-height: 1.8; margin-bottom: 2rem;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 0.85rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.6);
+  }
+  .contact-detail svg { width: 18px; height: 18px; stroke: var(--red); stroke-width: 1.8; flex-shrink: 0; }
+  .contact-form {
+    background: var(--white);
+    padding: 2.8rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group:last-of-type { margin-bottom: 1.5rem; }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem; color: var(--text);
+    background: var(--off-white);
+    border: 1.5px solid var(--light-gray);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7d95' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--navy); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--mid-gray); }
+  .form-submit {
+    width: 100%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: var(--red); border: none;
+    padding: 1rem 2rem; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .form-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .form-submit::before {
+    content:''; position:absolute; top:0; left:-120%;
+    width:60%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform:skewX(-20deg); transition:left 0.55s ease;
+  }
+  .form-submit:hover::before { left: 140%; }
+  .form-note {
+    font-size: 0.78rem; color: var(--muted);
+    text-align: center; margin-top: 0.85rem;
+    font-style: italic;
   }
 
   /* FOOTER */
@@ -1013,7 +1116,11 @@
     }
     .stat-num { color: var(--white); }
     .stat-label { color: rgba(255,255,255,0.45); }
-    .process,.engines,.merch,.about,.social,.reviews { padding: 4rem 1.5rem; }
+    .process,.engines,.merch,.about,.social,.reviews,.contact { padding: 4rem 1.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr 1fr; }
+    .social-header-right { text-align: left; max-width: 100%; }
     footer { padding: 4rem 1.5rem; grid-template-columns: 1fr 1fr; }
     .process-grid { grid-template-columns: 1fr 1fr; }
     .p-card { border-right: none; border-bottom: 1.5px solid var(--light-gray); }
@@ -1044,7 +1151,7 @@
 
 <!-- Announce Bar -->
 <div class="announce">
-  <i data-lucide="wrench"></i> New Listing: Yamaha 150HP 4-Stroke <span class="gold announce-extra">&nbsp;·&nbsp; Free shipping on merch over $75 &nbsp;·&nbsp; DM on Instagram to inquire</span>
+  <i data-lucide="wrench"></i> New Listing: Yamaha 150HP 4-Stroke <span class="gold announce-extra">&nbsp;·&nbsp; Free shipping on merch over $75 &nbsp;·&nbsp; Questions? Use the contact form below</span>
 </div>
 
 <!-- Nav -->
@@ -1058,6 +1165,7 @@
     <li><a href="#merch">Merch</a></li>
     <li><a href="#process">How It Works</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="#social">Follow</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
@@ -1076,6 +1184,7 @@
     <li><a href="#merch" class="drawer-link">Merch</a></li>
     <li><a href="#process" class="drawer-link">How It Works</a></li>
     <li><a href="#about" class="drawer-link">About</a></li>
+    <li><a href="#contact" class="drawer-link">Contact</a></li>
     <li><a href="#social" class="drawer-link">Follow</a></li>
   </ul>
   <a href="#engines" class="drawer-cta drawer-link">Shop Now</a>
@@ -1106,7 +1215,7 @@
     <div class="hero-stats">
       <div><div class="stat-num"><span class="counter" data-count="100" data-suffix="+">0</span></div><div class="stat-label">Engines Flipped</div></div>
       <div><div class="stat-num"><span class="counter" data-count="5" data-decimals="1">0.0</span><span style="color:#f4c84a;font-size:1.6rem;">★</span></div><div class="stat-label">Avg. Rating</div></div>
-      <div><div class="stat-num"><span class="counter" data-count="50" data-suffix="K+">0</span></div><div class="stat-label">Followers</div></div>
+      <div><div class="stat-num"><span class="counter" data-count="113" data-suffix="K+">0</span></div><div class="stat-label">Total Followers</div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -1345,7 +1454,7 @@
       <li>100% tested before listing — every single time</li>
       <li>Full repair history disclosed upfront</li>
       <li>Ships nationwide</li>
-      <li>DM for questions — always answered personally</li>
+      <li>Every question answered personally</li>
     </ul>
   </div>
 </section>
@@ -1423,30 +1532,149 @@
   </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Ask Us<br>Anything</h2>
+      <p>Questions about a specific engine, shipping logistics, or just want to know more before you buy — send a message and we'll get back to you directly. Every inquiry is handled personally.</p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <i data-lucide="shield-check"></i>
+          Every engine water-tested before listing
+        </div>
+        <div class="contact-detail">
+          <i data-lucide="truck"></i>
+          Ships nationwide — we handle the logistics
+        </div>
+        <div class="contact-detail">
+          <i data-lucide="clock"></i>
+          Typically respond within a few hours
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="contact-phone">Phone</label>
+          <input type="tel" id="contact-phone" placeholder="(555) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label for="contact-engine">Interested In</label>
+        <select id="contact-engine">
+          <option value="" disabled selected>Select an engine or topic</option>
+          <option>Yamaha 150HP 4-Stroke — $3,800</option>
+          <option>Mercury 90HP 2-Stroke — $2,200</option>
+          <option>Evinrude 115HP E-TEC — $2,950</option>
+          <option>Honda 60HP 4-Stroke — $1,850</option>
+          <option>General question</option>
+          <option>Merch order</option>
+          <option>Shipping & delivery</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" placeholder="Tell us what you need to know..."></textarea>
+      </div>
+      <button class="form-submit" type="button">Send Message <i data-lucide="arrow-right" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-left:0.4rem;stroke:white;stroke-width:2;"></i></button>
+      <p class="form-note">No spam, ever. We'll only use your info to respond to your inquiry.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SOCIAL -->
 <section class="social" id="social">
-  <div class="section-label">Follow Along</div>
-  <h2 class="section-title">Watch Every Flip Live</h2>
-  <p class="social-sub">Every teardown, rebuild, and water test — documented start to finish. Join the community.</p>
-  <div class="social-cards">
+  <div class="social-header">
+    <div>
+      <div class="section-label">Follow Along</div>
+      <h2 class="section-title">Watch Every<br>Flip Live</h2>
+    </div>
+    <p class="social-header-right">Same builds, same content — follow on whatever platform you already use. Every teardown documented start to finish.</p>
+  </div>
+  <div class="social-grid">
+
     <a class="s-card" href="https://www.instagram.com/thatboatdoctor" target="_blank">
-      <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
-      <div class="s-platform">Instagram</div>
-      <div class="s-handle">@thatboatdoctor</div>
-      <div class="s-cta">Follow →</div>
+      <div class="s-card-top">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div>
+          <div class="s-follower-count">51.6K</div>
+          <div class="s-follower-label">Followers</div>
+        </div>
+      </div>
+      <div class="s-card-body">
+        <div class="s-platform">Instagram</div>
+        <div class="s-handle">@thatboatdoctor</div>
+        <p class="s-format">Photos, reels, and before/after shots from every build. The fastest way to see what's currently in the shop.</p>
+        <div class="s-cta">Follow <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
     </a>
+
     <a class="s-card" href="https://youtube.com/@boatdoctor" target="_blank">
-      <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(255,255,255,0.7)" stroke="none"/></svg></div>
-      <div class="s-platform">YouTube</div>
-      <div class="s-handle">@boatdoctor</div>
-      <div class="s-cta">Subscribe →</div>
+      <div class="s-card-top">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(255,255,255,0.6)" stroke="none"/></svg>
+        </div>
+        <div>
+          <div class="s-follower-count">1.13K</div>
+          <div class="s-follower-label">Subscribers</div>
+        </div>
+      </div>
+      <div class="s-card-body">
+        <div class="s-platform">YouTube</div>
+        <div class="s-handle">@boatdoctor</div>
+        <p class="s-format">Full-length teardowns, diagnoses, and water tests. Watch the complete process from dead engine to running motor.</p>
+        <div class="s-cta">Subscribe <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
     </a>
+
+    <a class="s-card" href="https://www.tiktok.com/@boat.doctor" target="_blank">
+      <div class="s-card-top">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+        </div>
+        <div>
+          <div class="s-follower-count">7,793</div>
+          <div class="s-follower-label">Followers</div>
+        </div>
+      </div>
+      <div class="s-card-body">
+        <div class="s-platform">TikTok</div>
+        <div class="s-handle">@boat.doctor</div>
+        <p class="s-format">Short clips of the most satisfying moments — first starts, water tests, and engines that shouldn't run but do.</p>
+        <div class="s-cta">Follow <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </a>
+
     <a class="s-card" href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">
-      <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
-      <div class="s-platform">Facebook</div>
-      <div class="s-handle">That Boat Doctor</div>
-      <div class="s-cta">Join →</div>
+      <div class="s-card-top">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </div>
+        <div>
+          <div class="s-follower-count">53K</div>
+          <div class="s-follower-label">Members</div>
+        </div>
+      </div>
+      <div class="s-card-body">
+        <div class="s-platform">Facebook</div>
+        <div class="s-handle">That Boat Doctor</div>
+        <p class="s-format">The community hub. Ask questions, share your own repairs, and follow along with the group of fellow boaters.</p>
+        <div class="s-cta">Join <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
     </a>
+
   </div>
 </section>
 
@@ -1458,6 +1686,7 @@
     <div class="f-socials">
       <a href="https://www.instagram.com/thatboatdoctor" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
       <a href="https://youtube.com/@boatdoctor" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.tiktok.com/@boat.doctor" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
       <a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
     </div>
   </div>
@@ -1482,9 +1711,11 @@
   <div class="f-col">
     <h4>Contact</h4>
     <ul>
-      <li><a href="https://www.instagram.com/thatboatdoctor" target="_blank">DM on Instagram</a></li>
-      <li><a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">Message on Facebook</a></li>
+      <li><a href="#contact">Send a Message</a></li>
       <li><a href="#">Email Us</a></li>
+      <li><a href="https://www.instagram.com/thatboatdoctor" target="_blank">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@boat.doctor" target="_blank">TikTok</a></li>
+      <li><a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank">Facebook</a></li>
     </ul>
   </div>
 </footer>
@@ -1571,7 +1802,7 @@
         <div class="modal-foot">
           <div class="modal-price">${e.price}</div>
           <div class="modal-actions">
-            <a href="https://www.instagram.com/thatboatdoctor" target="_blank" class="btn-red">DM to Inquire</a>
+            <a href="#contact" onclick="closeModal()" class="btn-red">Send Inquiry</a>
             <a href="https://www.facebook.com/share/1CqbUuBzBi/" target="_blank" class="btn-navy-out">Facebook</a>
           </div>
         </div>
@@ -1640,7 +1871,7 @@
 
   // Scroll reveal animations
   const revealTargets = document.querySelectorAll(
-    '.process-header, .p-card, .section-header, .engines-trust, .e-card, .merch-grid, .about-vis, .about-content, .reviews-header, .reviews-grid, .social .section-label, .social .section-title, .social-sub, .social-cards'
+    '.process-header, .p-card, .section-header, .engines-trust, .e-card, .merch-grid, .about-vis, .about-content, .reviews-header, .reviews-grid, .contact-left, .contact-form, .social-header, .social-grid'
   );
   revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
