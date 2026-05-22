@@ -176,7 +176,7 @@
   .hero-right {
     background: var(--navy);
     position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: flex-end; justify-content: center;
   }
   .hero-right-img {
     position: absolute; inset: 0;
@@ -197,15 +197,72 @@
     background: linear-gradient(135deg, rgba(18,34,64,0.2) 0%, rgba(18,34,64,0.1) 100%);
     z-index: 1;
   }
-  .hero-logo-area {
+  .hero-logo-area { display: none; }
+  .hero-sub-label { display: none; }
+
+  /* HERO FEATURED LISTING */
+  .hero-featured {
     position: relative; z-index: 2;
-    display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+    width: calc(100% - 4rem);
+    max-width: 380px;
+    background: var(--white);
+    align-self: flex-end;
+    margin-bottom: 3rem;
   }
-  .hero-sub-label {
+  .hero-featured-img {
+    width: 100%; aspect-ratio: 16/10;
+    object-fit: cover; display: block;
+    background: var(--navy-mid);
+  }
+  .hero-featured-img-placeholder {
+    width: 100%; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-featured-body {
+    padding: 1.4rem 1.6rem 0;
+  }
+  .hero-featured-badge {
+    display: inline-block;
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600; font-size: 0.8rem;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    font-weight: 700; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--red); color: var(--white);
+    padding: 0.22rem 0.7rem;
+    margin-bottom: 0.75rem;
+    animation: badgePulse 2.2s ease infinite;
+  }
+  .hero-featured-make {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--red);
+    font-weight: 700; margin-bottom: 0.2rem;
+  }
+  .hero-featured-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; color: var(--navy);
+    line-height: 1; margin-bottom: 0.75rem;
+  }
+  .hero-featured-specs {
+    display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.1rem;
+  }
+  .hero-featured-spec {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.74rem; letter-spacing: 0.05em;
+    color: var(--muted); background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    padding: 0.18rem 0.55rem;
+  }
+  .hero-featured-foot {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.6rem;
+    background: var(--navy);
+    margin-top: 0;
+  }
+  .hero-featured-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; color: var(--white); line-height: 1;
   }
   .hero-mobile-logo { display: none; }
   .hero-mobile-text { display: none; }
@@ -1322,9 +1379,23 @@
     <img src="images/hero-bg.jpg" class="hero-right-img" alt="That Boat Doctor workshop">
     <div class="hero-right-pattern"></div>
     <div class="hero-right-overlay"></div>
-    <div class="hero-logo-area">
-      <img src="images/that-boat-doctor-logo-light.png" alt="That Boat Doctor" style="width:280px;max-width:80%;filter:drop-shadow(0 20px 60px rgba(0,0,0,.7));display:block;">
-      <div class="hero-sub-label">That Boat Doctor · Est. Now</div>
+    <div class="hero-featured">
+      <img src="images/engine-yamaha-150.jpg" class="hero-featured-img" alt="Yamaha 150HP 4-Stroke" onerror="this.style.display='none'">
+      <div class="hero-featured-body">
+        <div class="hero-featured-badge">Just Listed</div>
+        <div class="hero-featured-make">Yamaha</div>
+        <div class="hero-featured-name">150 HP 4-Stroke</div>
+        <div class="hero-featured-specs">
+          <span class="hero-featured-spec">2018</span>
+          <span class="hero-featured-spec">Rebuilt Carbs</span>
+          <span class="hero-featured-spec">New Impeller</span>
+          <span class="hero-featured-spec">Water Tested</span>
+        </div>
+      </div>
+      <div class="hero-featured-foot">
+        <span class="hero-featured-price">$3,800</span>
+        <button class="btn-sm-red" onclick="openModal('yamaha')">View Details</button>
+      </div>
     </div>
   </div>
 </div>
