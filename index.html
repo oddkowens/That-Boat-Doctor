@@ -970,25 +970,16 @@
       background-size: cover;
       background-position: center;
     }
-    .hero-title { display: none; }
     .hero-mobile-logo { display: none; }
-    .hero-mobile-text {
+    .hero-mobile-text { display: none; }
+    .hero-title {
       display: block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
-      line-height: 1;
       color: var(--white);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.03em;
+      font-size: clamp(3.8rem, 14vw, 5.5rem);
+      margin-bottom: 0.2em;
     }
-    .hero-mobile-text span {
-      display: block;
-      font-size: 2rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 0.3rem;
-    }
-    .hero-title .red { color: var(--red); }
-    .hero-sub { color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; display: none; }
+    .hero-title .red { color: var(--white); }
+    .hero-sub { display: block; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
     .hero-sub strong { color: var(--white); }
     .hero-eyebrow { color: rgba(255,255,255,0.7); }
     .pulse-dot { background: rgba(255,255,255,0.7); }
