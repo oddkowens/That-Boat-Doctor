@@ -210,6 +210,7 @@
   }
   .hero-mobile-logo { display: none; }
   .hero-mobile-text { display: none; }
+  .hero-content-group { display: contents; }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 0.75rem;
@@ -959,6 +960,10 @@
     .hero-right { display: none; }
     .hero-left {
       padding: 4rem 1.5rem 0;
+      min-height: calc(100svh - 36px - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       background-image: linear-gradient(rgba(18,34,64,0.85), rgba(18,34,64,0.85)), url('images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
@@ -985,12 +990,6 @@
     .hero-sub strong { color: var(--white); }
     .hero-eyebrow { color: rgba(255,255,255,0.7); }
     .pulse-dot { background: rgba(255,255,255,0.7); }
-    .hero-actions {
-      flex-direction: column;
-      gap: 0.75rem;
-      padding-bottom: 2rem;
-      margin-bottom: 0;
-    }
     .hero-actions .btn-red,
     .hero-actions .btn-navy-out {
       width: 100%;
@@ -999,9 +998,23 @@
     }
     .btn-navy-out { color: var(--white); border-color: rgba(255,255,255,0.35); }
     .btn-navy-out:hover { background: var(--white); color: var(--navy); }
+    .hero-mobile-text { margin-bottom: 1.5rem; }
+    .hero-content-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      padding: 1rem 0 2rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
     .hero-stats {
       border-top-color: rgba(255,255,255,0.12);
-      background: rgba(18,34,64,0.75);
+      background: rgba(255,255,255,0.12);
       margin: 0 -1.5rem;
       padding: 1.5rem 1.5rem 2rem;
     }
@@ -1078,22 +1091,24 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">
-      <div class="pulse-dot"></div>
-      Restoring Forgotten Boats
-    </div>
-    <div class="hero-mobile-text">
-      RESTORING FORGOTTEN BOATS<span>ONE VIDEO AT A TIME.</span>
-    </div>
-    <h1 class="hero-title">
-      THAT<br><span class="red">BOAT</span><br>DOCTOR
-    </h1>
-    <p class="hero-sub">
-      <strong>Buying, repairing &amp; flipping outboards</strong> — one engine at a time. Every motor is fully diagnosed, fixed right, and water-tested before it ever gets listed.
-    </p>
-    <div class="hero-actions">
-      <a href="#engines" class="btn-red">Browse Engines</a>
-      <a href="#merch" class="btn-navy-out">Shop Merch</a>
+    <div class="hero-content-group">
+      <div class="hero-eyebrow">
+        <div class="pulse-dot"></div>
+        Restoring Forgotten Boats
+      </div>
+      <div class="hero-mobile-text">
+        RESTORING FORGOTTEN BOATS<span>ONE VIDEO AT A TIME.</span>
+      </div>
+      <h1 class="hero-title">
+        THAT<br><span class="red">BOAT</span><br>DOCTOR
+      </h1>
+      <p class="hero-sub">
+        <strong>Buying, repairing &amp; flipping outboards</strong> — one engine at a time. Every motor is fully diagnosed, fixed right, and water-tested before it ever gets listed.
+      </p>
+      <div class="hero-actions">
+        <a href="#engines" class="btn-red">Browse Engines</a>
+        <a href="#merch" class="btn-navy-out">Shop Merch</a>
+      </div>
     </div>
     <div class="hero-stats">
       <div><div class="stat-num"><span class="counter" data-count="100" data-suffix="+">0</span></div><div class="stat-label">Engines Flipped</div></div>
