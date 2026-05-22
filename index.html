@@ -208,15 +208,24 @@
     gap: 0;
   }
   .hero-panel-zone {
-    padding: 2.2rem 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 1.8rem 1.4rem;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: rgba(10,18,36,0.35);
   }
-  .hero-panel-zone:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-panel-zone:nth-child(even) {
+    background: rgba(10,18,36,0.55);
+  }
+  .hero-panel-zone:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .hero-panel-zone {
+    padding: 1.8rem 0;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .hero-panel-zone:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
   .hero-panel-tag {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700; font-size: 0.65rem;
     letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1rem;
+    color: var(--gold); margin-bottom: 0.9rem;
     display: flex; align-items: center; gap: 0.6rem;
   }
   .hero-panel-tag::before {
@@ -297,7 +306,15 @@
     line-height: 1; margin-bottom: 0.5rem;
   }
 
-  /* Zone 3 — Merch */
+  .hero-merch-link {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-merch-link:hover { color: var(--white); }
   .hero-merch-row {
     display: flex; align-items: center;
     justify-content: space-between; gap: 1rem;
@@ -313,9 +330,8 @@
     font-size: 0.82rem; color: rgba(255,255,255,0.4);
     letter-spacing: 0.05em;
   }
-  .hero-mobile-logo { display: none; }
-  .hero-mobile-text { display: none; }
-  .hero-content-group { display: contents; }
+  /* MOBILE HERO PANEL — hidden on desktop */
+  .hero-mobile-panel { display: none; }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 0.75rem;
@@ -1264,6 +1280,21 @@
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-right { display: none; }
     .hero-panel { display: none; }
+    .hero-mobile-panel {
+      display: block;
+      background: var(--navy);
+      padding: 0 1.5rem;
+    }
+    .hero-mobile-panel .hero-panel-zone {
+      background: transparent;
+      padding: 1.5rem 0;
+    }
+    .hero-mobile-panel .hero-panel-zone:nth-child(even) {
+      background: rgba(255,255,255,0.04);
+      margin: 0 -1.5rem;
+      padding: 1.5rem;
+    }
+    .strip { border-top: 3px solid var(--red); }
     .hero-left {
       padding: 4rem 1.5rem 0;
       min-height: calc(100svh - 36px - 64px);
@@ -1416,7 +1447,6 @@
       </p>
       <div class="hero-actions">
         <a href="#engines" class="btn-red">Browse Engines</a>
-        <a href="#merch" class="btn-navy-out">Shop Merch</a>
       </div>
     </div>
     <div class="hero-stats">
@@ -1487,10 +1517,68 @@
             <div class="hero-merch-name">That Boat Doctor Merch</div>
             <div class="hero-merch-sub">Tees · Caps · Hoodies · Stickers</div>
           </div>
-          <a href="#merch" class="btn-sm-red">Shop Now</a>
+          <a href="#merch" class="hero-merch-link">Shop Merch →</a>
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE HERO PANEL -->
+<div class="hero-mobile-panel">
+  <div class="hero-panel-zone">
+    <div class="hero-panel-tag">Watch the Builds</div>
+    <div class="hero-videos">
+      <a class="hero-video-row" href="https://www.facebook.com/reel/1661100335057826" target="_blank" rel="noopener">
+        <div class="hero-video-left">
+          <div class="hero-video-count">2M<span>Views</span></div>
+          <div class="hero-video-title">Restoring a $400 Boat</div>
+        </div>
+        <div class="hero-video-arrow">→</div>
+      </a>
+      <a class="hero-video-row" href="https://www.facebook.com/reel/2027279711462714" target="_blank" rel="noopener">
+        <div class="hero-video-left">
+          <div class="hero-video-count">1.4M<span>Views</span></div>
+          <div class="hero-video-title">Why I Stopped Buying on Marketplace</div>
+        </div>
+        <div class="hero-video-arrow">→</div>
+      </a>
+      <a class="hero-video-row" href="https://www.facebook.com/reel/2242911509813365" target="_blank" rel="noopener">
+        <div class="hero-video-left">
+          <div class="hero-video-count">1.4M<span>Views</span></div>
+          <div class="hero-video-title">How I Started Flipping Boats at 22</div>
+        </div>
+        <div class="hero-video-arrow">→</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-panel-zone">
+    <div class="hero-panel-tag">Latest Engine</div>
+    <div class="hero-engine-row">
+      <div class="hero-engine-left">
+        <div class="hero-engine-make">Yamaha</div>
+        <div class="hero-engine-name">150 HP 4-Stroke</div>
+        <div class="hero-engine-specs">
+          <span class="hero-engine-spec">2018</span>
+          <span class="hero-engine-spec">Rebuilt</span>
+          <span class="hero-engine-spec">Water Tested</span>
+        </div>
+      </div>
+      <div class="hero-engine-right">
+        <div class="hero-engine-price">$3,800</div>
+        <button class="btn-sm-red" onclick="openModal('yamaha')">View Details</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-panel-zone">
+    <div class="hero-panel-tag">Official Gear</div>
+    <div class="hero-merch-row">
+      <div class="hero-merch-left">
+        <div class="hero-merch-name">That Boat Doctor Merch</div>
+        <div class="hero-merch-sub">Tees · Caps · Hoodies · Stickers</div>
+      </div>
+      <a href="#merch" class="hero-merch-link">Shop Merch →</a>
     </div>
   </div>
 </div>
