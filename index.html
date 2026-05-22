@@ -209,6 +209,7 @@
     color: rgba(255,255,255,0.45);
   }
   .hero-mobile-logo { display: none; }
+  .hero-mobile-text { display: none; }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 0.75rem;
@@ -963,15 +964,24 @@
       background-position: center;
     }
     .hero-title { display: none; }
-    .hero-mobile-logo {
+    .hero-mobile-logo { display: none; }
+    .hero-mobile-text {
       display: block;
-      width: 200px;
-      max-width: 60%;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--white);
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+      letter-spacing: 0.03em;
+    }
+    .hero-mobile-text span {
+      display: block;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.3rem;
     }
     .hero-title .red { color: var(--red); }
-    .hero-sub { color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+    .hero-sub { color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; display: none; }
     .hero-sub strong { color: var(--white); }
     .hero-eyebrow { color: rgba(255,255,255,0.7); }
     .pulse-dot { background: rgba(255,255,255,0.7); }
@@ -1072,7 +1082,9 @@
       <div class="pulse-dot"></div>
       Restoring Forgotten Boats
     </div>
-    <img src="images/that-boat-doctor-logo-light.png" alt="That Boat Doctor" class="hero-mobile-logo">
+    <div class="hero-mobile-text">
+      RESTORING FORGOTTEN BOATS<span>ONE VIDEO AT A TIME.</span>
+    </div>
     <h1 class="hero-title">
       THAT<br><span class="red">BOAT</span><br>DOCTOR
     </h1>
